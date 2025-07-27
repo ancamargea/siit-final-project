@@ -1,5 +1,13 @@
 import { Routes, Route } from "react-router-dom";
 import { Nav } from "./navigation/Nav";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import Profile from "./pages/Profile";
+import StoreList from "./pages/StoreList";
+import StoreDetail from "./pages/StoreDetail";
+import AdminDashboard from "./pages/AdminDashboard";
+import "./App.css";
 
 function App() {
   return (
