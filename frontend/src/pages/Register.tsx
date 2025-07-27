@@ -26,6 +26,7 @@ function Register() {
     Partial<Record<keyof RegisterData, string>>
   >({});
   const [successMessage, setSuccessMessage] = useState("");
+  const [serverError, setServerError] = useState(""); // for backend errors
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -33,7 +34,7 @@ function Register() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     const result = registerSchema.safeParse(formData);
@@ -46,10 +47,41 @@ function Register() {
       });
       setErrors(fieldErrors);
       setSuccessMessage("");
-    } else {
-      setErrors({});
-      console.log("✅ Registering:", formData);
-      setSuccessMessage("Registration successful!");
+      setServerError("");
+      return;
+    }
+
+    setErrors({});
+    setServerError("");
+
+    try {
+      const response = await fetch("http://localhost:4000/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => null);
+        const message =
+          errorData?.message || `Failed to register: ${response.statusText}`;
+        setServerError(message);
+        setSuccessMessage("");
+        return;
+      }
+
+      // Registration success
+      setSuccessMessage("Registration successful! You can now log in.");
+      setFormData({
+        email: "",
+        password: "",
+        firstName: "",
+        lastName: "",
+        role: "user",
+      });
+    } catch (error) {
+      setServerError("Network error. Please try again later.");
+      setSuccessMessage("");
     }
   };
 
@@ -65,7 +97,7 @@ function Register() {
             value={formData.email}
             onChange={handleChange}
           />
-          {errors.email && <p>{errors.email}</p>}
+          {errors.email && <p style={{ color: "red" }}>{errors.email}</p>}
         </div>
 
         <div>
@@ -76,7 +108,7 @@ function Register() {
             value={formData.password}
             onChange={handleChange}
           />
-          {errors.password && <p>{errors.password}</p>}
+          {errors.password && <p style={{ color: "red" }}>{errors.password}</p>}
         </div>
 
         <div>
@@ -87,7 +119,9 @@ function Register() {
             value={formData.firstName}
             onChange={handleChange}
           />
-          {errors.firstName && <p>{errors.firstName}</p>}
+          {errors.firstName && (
+            <p style={{ color: "red" }}>{errors.firstName}</p>
+          )}
         </div>
 
         <div>
@@ -98,7 +132,7 @@ function Register() {
             value={formData.lastName}
             onChange={handleChange}
           />
-          {errors.lastName && <p>{errors.lastName}</p>}
+          {errors.lastName && <p style={{ color: "red" }}>{errors.lastName}</p>}
         </div>
 
         <div>
@@ -112,7 +146,8 @@ function Register() {
         <button type="submit">Register</button>
       </form>
 
-      {successMessage && <p>{successMessage}</p>}
+      {serverError && <p style={{ color: "red" }}>{serverError}</p>}
+      {successMessage && <p style={{ color: "green" }}>{successMessage}</p>}
     </div>
   );
 }

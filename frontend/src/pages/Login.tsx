@@ -15,17 +15,17 @@ function Login() {
     email: "",
     password: "",
   });
-
   const [errors, setErrors] = useState<
     Partial<Record<keyof LoginData, string>>
   >({});
   const [successMessage, setSuccessMessage] = useState("");
+  const [serverError, setServerError] = useState("");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     const result = loginSchema.safeParse(formData);
@@ -38,10 +38,40 @@ function Login() {
       });
       setErrors(fieldErrors);
       setSuccessMessage("");
-    } else {
-      setErrors({});
-      console.log("✅ Logging in:", formData);
+      setServerError("");
+      return;
+    }
+
+    setErrors({});
+    setServerError("");
+
+    try {
+      const response = await fetch("http://localhost:4000/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => null);
+        const message =
+          errorData?.message || `Login failed: ${response.statusText}`;
+        setServerError(message);
+        setSuccessMessage("");
+        return;
+      }
+
+      const data = await response.json();
+      // Store token for later API calls + store user info
+      localStorage.setItem("accessToken", data.accessToken);
+      localStorage.setItem("user", JSON.stringify(data.user));
+
       setSuccessMessage("Login successful!");
+      setServerError("");
+      // Optional: redirect or update UI here
+    } catch (error) {
+      setServerError("Network error. Please try again later.");
+      setSuccessMessage("");
     }
   };
 
@@ -57,7 +87,7 @@ function Login() {
             value={formData.email}
             onChange={handleChange}
           />
-          {errors.email && <p>{errors.email}</p>}
+          {errors.email && <p style={{ color: "red" }}>{errors.email}</p>}
         </div>
 
         <div>
@@ -68,13 +98,14 @@ function Login() {
             value={formData.password}
             onChange={handleChange}
           />
-          {errors.password && <p>{errors.password}</p>}
+          {errors.password && <p style={{ color: "red" }}>{errors.password}</p>}
         </div>
 
         <button type="submit">Login</button>
       </form>
 
-      {successMessage && <p>{successMessage}</p>}
+      {serverError && <p style={{ color: "red" }}>{serverError}</p>}
+      {successMessage && <p style={{ color: "green" }}>{successMessage}</p>}
     </div>
   );
 }

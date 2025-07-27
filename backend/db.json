@@ -127,9 +127,16 @@
       "firstName": "Lucian",
       "lastName": "Marin",
       "role": "user"
+    },
+    {
+      "email": "Test2@example.com",
+      "password": "$2a$10$mOga0waiebYDD7XM.OM7QeX9xg3A.t2M2fjeKCJ.4MwjyBToiIwqG",
+      "firstName": "New",
+      "lastName": "User",
+      "role": "user",
+      "id": 17
     }
   ],
-
   "stores": [
     {
       "id": 1,
@@ -142,7 +149,6 @@
       "rating": 4.8,
       "website": "https://www.nicherecords.ro"
     },
-
     {
       "id": 2,
       "ownerId": 1,
@@ -210,7 +216,6 @@
       "website": "https://www.facebook.com/DustySoundsRecordShop"
     }
   ],
-
   "reviews": [
     {
       "id": 1,
