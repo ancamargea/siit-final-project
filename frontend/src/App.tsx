@@ -7,6 +7,7 @@ import Profile from "./pages/Profile";
 import StoreList from "./pages/StoreList";
 import StoreDetail from "./pages/StoreDetail";
 import AdminDashboard from "./pages/AdminDashboard";
+import { PrivateRoute } from "./features/Auth/PrivateRoute";
 import "./App.css";
 
 function App() {
@@ -17,7 +18,14 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/profile" element={<Profile />} />
+        <Route
+          path="/profile"
+          element={
+            <PrivateRoute>
+              <Profile />
+            </PrivateRoute>
+          }
+        />
         <Route path="/stores" element={<StoreList />} />
         <Route path="/stores/:id" element={<StoreDetail />} />
         <Route path="/admin" element={<AdminDashboard />} />
