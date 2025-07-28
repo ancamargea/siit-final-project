@@ -8,6 +8,8 @@ import StoreList from "./pages/StoreList";
 import StoreDetail from "./pages/StoreDetail";
 import AdminDashboard from "./pages/AdminDashboard";
 import { PrivateRoute } from "./features/Auth/PrivateRoute";
+
+import AddStore from "./features/Stores/AddStore";
 import "./App.css";
 
 function App() {
@@ -29,6 +31,15 @@ function App() {
         <Route path="/stores" element={<StoreList />} />
         <Route path="/stores/:id" element={<StoreDetail />} />
         <Route path="/admin" element={<AdminDashboard />} />
+
+        <Route
+          path="/stores/add"
+          element={
+            <PrivateRoute allowedRoles={["owner"]}>
+              <AddStore />
+            </PrivateRoute>
+          }
+        />
       </Routes>
     </>
   );

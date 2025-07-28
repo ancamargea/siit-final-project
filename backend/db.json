@@ -135,6 +135,14 @@
       "lastName": "User",
       "role": "user",
       "id": 17
+    },
+    {
+      "email": "Owner1@example.com",
+      "password": "$2a$10$QRZ6jWbz9XZhvE8VYOu9d.YGMlIxSRBgJynJmE7VM74X8PCLPw1Fy",
+      "firstName": "Store",
+      "lastName": "Owner",
+      "role": "owner",
+      "id": 18
     }
   ],
   "stores": [
