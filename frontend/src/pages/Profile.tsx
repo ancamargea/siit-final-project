@@ -1,12 +1,15 @@
 import { useState } from "react";
 import { useAuthContext } from "../features/Auth/AuthContext";
+import type { User } from "../features/Auth/types";
 
 export default function Profile() {
   const { user, accessToken, login } = useAuthContext();
 
-  const [firstName, setFirstName] = useState(user?.firstName || "");
-  const [lastName, setLastName] = useState(user?.lastName || "");
-  const [email, setEmail] = useState(user?.email || "");
+  const typedUser = user as User | null;
+
+  const [firstName, setFirstName] = useState(typedUser?.firstName ?? "");
+  const [lastName, setLastName] = useState(typedUser?.lastName ?? "");
+  const [email, setEmail] = useState(typedUser?.email ?? "");
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
 
