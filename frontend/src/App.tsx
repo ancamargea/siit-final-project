@@ -10,6 +10,7 @@ import AdminDashboard from "./pages/AdminDashboard";
 import { PrivateRoute } from "./features/Auth/PrivateRoute";
 
 import AddStore from "./features/Stores/AddStore";
+import EditStore from "./features/Stores/EditStore";
 import "./App.css";
 
 function App() {
@@ -37,6 +38,15 @@ function App() {
           element={
             <PrivateRoute allowedRoles={["owner"]}>
               <AddStore />
+            </PrivateRoute>
+          }
+        />
+
+        <Route
+          path="/stores/:id/edit"
+          element={
+            <PrivateRoute allowedRoles={["owner"]}>
+              <EditStore />
             </PrivateRoute>
           }
         />

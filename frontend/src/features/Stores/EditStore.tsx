@@ -1,0 +1,176 @@
+import { useEffect, useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import { useAuthContext } from "../Auth/AuthContext";
+
+export default function EditVinylStore() {
+  const { id } = useParams<{ id: string }>();
+  const navigate = useNavigate();
+  const { user, accessToken } = useAuthContext();
+
+  const [name, setName] = useState("");
+  const [city, setCity] = useState("");
+  const [address, setAddress] = useState("");
+  const [description, setDescription] = useState("");
+  const [openHours, setOpenHours] = useState("");
+  const [rating, setRating] = useState(1);
+  const [website, setWebsite] = useState("");
+
+  const [loading, setLoading] = useState(true);
+  const [message, setMessage] = useState("");
+
+  // Block users not logged in or not owners
+  useEffect(() => {
+    if (!user) {
+      navigate("/login");
+      return;
+    }
+    if (user.role !== "owner") {
+      setMessage("You do not have permission to edit stores.");
+      setLoading(false);
+    }
+  }, [user, navigate]);
+
+  useEffect(() => {
+    async function fetchStore() {
+      if (!id || !accessToken) return;
+
+      try {
+        const res = await fetch(`http://localhost:4000/vinylStores/${id}`, {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        });
+
+        if (!res.ok) throw new Error("Failed to fetch store");
+
+        const data = await res.json();
+
+        setName(data.name);
+        setCity(data.city);
+        setAddress(data.address);
+        setDescription(data.description);
+        setOpenHours(data.openHours);
+        setRating(data.rating);
+        setWebsite(data.website);
+      } catch (err) {
+        setMessage("Could not load store.");
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchStore();
+  }, [id, accessToken]);
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+
+    if (!accessToken) {
+      setMessage("You must be logged in to update the store.");
+      return;
+    }
+
+    const updatedStore = {
+      name,
+      city,
+      address,
+      description,
+      openHours,
+      rating,
+      website,
+    };
+
+    try {
+      const res = await fetch(`http://localhost:4000/vinylStores/${id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${accessToken}`,
+        },
+        body: JSON.stringify(updatedStore),
+      });
+
+      if (!res.ok) throw new Error("Update failed");
+
+      setMessage("Store updated!");
+      navigate("/vinylStores");
+    } catch {
+      setMessage("Something went wrong.");
+    }
+  }
+
+  if (loading) return <p>Loading store...</p>;
+
+  if (message === "You do not have permission to edit stores.") {
+    return <p>{message}</p>;
+  }
+
+  return (
+    <div>
+      <h2>Edit Vinyl Store</h2>
+      {message && <p>{message}</p>}
+      <form onSubmit={handleSubmit}>
+        <label>
+          Name:
+          <input
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+          />
+        </label>
+        <br />
+        <label>
+          City:
+          <input
+            value={city}
+            onChange={(e) => setCity(e.target.value)}
+            required
+          />
+        </label>
+        <br />
+        <label>
+          Address:
+          <input
+            value={address}
+            onChange={(e) => setAddress(e.target.value)}
+            required
+          />
+        </label>
+        <br />
+        <label>
+          Description:
+          <textarea
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+          />
+        </label>
+        <br />
+        <label>
+          Open Hours:
+          <input
+            value={openHours}
+            onChange={(e) => setOpenHours(e.target.value)}
+          />
+        </label>
+        <br />
+        <label>
+          Rating (1–5):
+          <input
+            type="number"
+            min={1}
+            max={5}
+            value={rating}
+            onChange={(e) => setRating(Number(e.target.value))}
+          />
+        </label>
+        <br />
+        <label>
+          Website:
+          <input value={website} onChange={(e) => setWebsite(e.target.value)} />
+        </label>
+        <br />
+        <button type="submit">Save Changes</button>
+      </form>
+    </div>
+  );
+}
