@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { z } from "zod";
+import { useAuthContext } from "../features/Auth/AuthContext";
 
 const loginSchema = z.object({
   email: z.string().email({ message: "Invalid email address" }),
@@ -11,6 +12,8 @@ const loginSchema = z.object({
 type LoginData = z.infer<typeof loginSchema>;
 
 function Login() {
+  const { login } = useAuthContext();
+
   const [formData, setFormData] = useState<LoginData>({
     email: "",
     password: "",
@@ -62,13 +65,14 @@ function Login() {
       }
 
       const data = await response.json();
-      // Store token for later API calls + store user info
-      localStorage.setItem("accessToken", data.accessToken);
-      localStorage.setItem("user", JSON.stringify(data.user));
+
+      login({
+        accessToken: data.accessToken,
+        user: data.user,
+      });
 
       setSuccessMessage("Login successful!");
       setServerError("");
-      // Optional: redirect or update UI here
     } catch (error) {
       setServerError("Network error. Please try again later.");
       setSuccessMessage("");

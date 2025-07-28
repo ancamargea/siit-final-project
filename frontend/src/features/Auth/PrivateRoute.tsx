@@ -10,6 +10,8 @@ interface PrivateRouteProps {
 export function PrivateRoute({ children, allowedRoles }: PrivateRouteProps) {
   const { user } = useAuthContext();
 
+  console.log("PrivateRoute user:", user?.role);
+
   if (!user) {
     // Not logged in
     return <Navigate to="/login" />;
