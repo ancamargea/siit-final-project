@@ -11,6 +11,7 @@ import { PrivateRoute } from "./features/Auth/PrivateRoute";
 
 import AddStore from "./features/Stores/AddStore";
 import EditStore from "./features/Stores/EditStore";
+import ReviewStore from "./features/Stores/ReviewStore";
 import "./App.css";
 
 function App() {
@@ -47,6 +48,15 @@ function App() {
           element={
             <PrivateRoute allowedRoles={["owner"]}>
               <EditStore />
+            </PrivateRoute>
+          }
+        />
+
+        <Route
+          path="/stores/:id/review"
+          element={
+            <PrivateRoute>
+              <ReviewStore />
             </PrivateRoute>
           }
         />
