@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 type Store = {
   id: number;
@@ -32,8 +33,10 @@ function StoreList() {
         <ul>
           {stores.map((store) => (
             <li key={store.id}>
-              <strong>{store.name}</strong> — {store.city} — Rating:{" "}
-              {store.rating ?? "N/A"}
+              <Link to={`/stores/${store.id}`}>
+                <strong>{store.name}</strong>
+              </Link>{" "}
+              — {store.city} — Rating: {store.rating ?? "N/A"}
             </li>
           ))}
         </ul>
