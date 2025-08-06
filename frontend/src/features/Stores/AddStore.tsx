@@ -23,6 +23,15 @@ function AddStore() {
     e.preventDefault();
 
     const token = localStorage.getItem("accessToken");
+    if (!token) {
+      alert("You must be logged in to add a store.");
+      return;
+    }
+
+    // Decode token to get user id (ownerId)
+    const user = JSON.parse(atob(token.split(".")[1]));
+    const ownerId = user.id;
+
     try {
       const res = await fetch("http://localhost:4000/stores", {
         method: "POST",
@@ -30,17 +39,23 @@ function AddStore() {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify({ ...formData, rating: Number(formData.rating) }),
+        body: JSON.stringify({
+          ...formData,
+          rating: Number(formData.rating),
+          ownerId,
+        }),
       });
 
       if (!res.ok) {
-        alert("Something went wrong");
+        alert("Something went wrong while adding the store.");
         return;
       }
 
-      navigate("/stores");
+      // Redirect to admin dashboard (or wherever you want)
+      navigate("/admin");
     } catch (err) {
       console.error("Error creating store:", err);
+      alert("Failed to add store. Try again.");
     }
   };
 

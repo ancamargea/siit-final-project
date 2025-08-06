@@ -35,7 +35,7 @@ function App() {
         <Route path="/admin" element={<AdminDashboard />} />
 
         <Route
-          path="/stores/add"
+          path="/admin/add-store"
           element={
             <PrivateRoute allowedRoles={["owner"]}>
               <AddStore />

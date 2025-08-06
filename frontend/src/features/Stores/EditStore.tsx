@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useAuthContext } from "../Auth/AuthContext";
 
-export default function EditVinylStore() {
+export default function EditStore() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const { user, accessToken } = useAuthContext();
@@ -35,7 +35,7 @@ export default function EditVinylStore() {
       if (!id || !accessToken) return;
 
       try {
-        const res = await fetch(`http://localhost:4000/vinylStores/${id}`, {
+        const res = await fetch(`http://localhost:4000/stores/${id}`, {
           headers: {
             Authorization: `Bearer ${accessToken}`,
           },
@@ -47,11 +47,11 @@ export default function EditVinylStore() {
 
         setName(data.name);
         setCity(data.city);
-        setAddress(data.address);
-        setDescription(data.description);
-        setOpenHours(data.openHours);
-        setRating(data.rating);
-        setWebsite(data.website);
+        setAddress(data.address || "");
+        setDescription(data.description || "");
+        setOpenHours(data.openHours || "");
+        setRating(data.rating || 1);
+        setWebsite(data.website || "");
       } catch (err) {
         setMessage("Could not load store.");
       } finally {
@@ -81,7 +81,7 @@ export default function EditVinylStore() {
     };
 
     try {
-      const res = await fetch(`http://localhost:4000/vinylStores/${id}`, {
+      const res = await fetch(`http://localhost:4000/stores/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -93,7 +93,7 @@ export default function EditVinylStore() {
       if (!res.ok) throw new Error("Update failed");
 
       setMessage("Store updated!");
-      navigate("/vinylStores");
+      navigate("/admin"); // redirect back to admin dashboard
     } catch {
       setMessage("Something went wrong.");
     }
@@ -107,7 +107,7 @@ export default function EditVinylStore() {
 
   return (
     <div>
-      <h2>Edit Vinyl Store</h2>
+      <h2>Edit Store</h2>
       {message && <p>{message}</p>}
       <form onSubmit={handleSubmit}>
         <label>
@@ -130,11 +130,7 @@ export default function EditVinylStore() {
         <br />
         <label>
           Address:
-          <input
-            value={address}
-            onChange={(e) => setAddress(e.target.value)}
-            required
-          />
+          <input value={address} onChange={(e) => setAddress(e.target.value)} />
         </label>
         <br />
         <label>
