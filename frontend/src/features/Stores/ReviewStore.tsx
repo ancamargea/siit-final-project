@@ -126,37 +126,39 @@ export default function ReviewStore() {
         )}
       </ul>
 
-      <form onSubmit={handleSubmit}>
-        <label>
-          Add a review:
-          <input
-            type="text"
-            value={newReviewText}
-            required
-            onChange={(e) => {
-              setNewReviewText(e.target.value);
-              setMessage("");
-            }}
-          />
-        </label>
-        <br />
-        <label>
-          Rating (1-5):
-          <input
-            type="number"
-            min={1}
-            max={5}
-            value={newReviewRating}
-            required
-            onChange={(e) => {
-              setNewReviewRating(e.target.value);
-              setMessage("");
-            }}
-          />
-        </label>
-        <br />
-        <button type="submit">Submit</button>
-      </form>
+      <div className="review-form-container">
+        <form className="review-form" onSubmit={handleSubmit}>
+          <label>
+            Add a review:
+            <input
+              type="text"
+              value={newReviewText}
+              required
+              onChange={(e) => {
+                setNewReviewText(e.target.value);
+                setMessage("");
+              }}
+            />
+          </label>
+          <br />
+          <label>
+            Rating (1-5):
+            <input
+              type="number"
+              min={1}
+              max={5}
+              value={newReviewRating}
+              required
+              onChange={(e) => {
+                setNewReviewRating(e.target.value);
+                setMessage("");
+              }}
+            />
+          </label>
+          <br />
+          <button type="submit">Submit</button>
+        </form>
+      </div>
 
       {message && <p>{message}</p>}
     </div>

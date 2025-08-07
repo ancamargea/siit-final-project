@@ -118,87 +118,103 @@ function StoreDetail() {
         store.reviews.length
       : null;
 
-  if (loading) return <p>Loading store details...</p>;
-  if (error) return <p>Error: {error}</p>;
-  if (!store) return <p>No store found.</p>;
+  if (loading) return <p className="loading">Loading store details...</p>;
+  if (error) return <p className="error">Error: {error}</p>;
+  if (!store) return <p className="no-store">No store found.</p>;
 
   return (
-    <div>
-      <h2>{store.name}</h2>
-      <p>
-        <strong>City:</strong> {store.city}
-      </p>
-      <p>
-        <strong>Address:</strong> {store.address}
-      </p>
-      <p>
-        <strong>Description:</strong> {store.description}
-      </p>
-      <p>
-        <strong>Open Hours:</strong> {store.openHours}
-      </p>
-      <p>
-        <strong>Rating:</strong>{" "}
-        {averageRating !== null ? averageRating.toFixed(1) : "No reviews yet"}
-      </p>
-      {store.website && (
-        <p>
-          <a href={store.website} target="_blank" rel="noopener noreferrer">
-            Visit Website
-          </a>
-        </p>
-      )}
+    <div className="store-detail">
+      <h2 className="store-name">{store.name}</h2>
 
-      <h3>Reviews</h3>
-      <ul>
-        {store.reviews && store.reviews.length > 0 ? (
-          store.reviews.map((r) => (
-            <li key={r.id} style={{ marginBottom: "1rem" }}>
-              <strong>Rating:</strong> {r.rating} <br />
-              {r.text} <br />
-              {currentUserId === r.userId && (
-                <button
-                  onClick={() => handleDeleteReview(r.id)}
-                  disabled={deletingReviewId === r.id}
-                >
-                  {deletingReviewId === r.id ? "Deleting..." : "Delete"}
-                </button>
-              )}
-            </li>
-          ))
-        ) : (
-          <li>No reviews yet.</li>
+      <div className="store-info">
+        <p>
+          <strong>City:</strong> {store.city}
+        </p>
+        <p>
+          <strong>Address:</strong> {store.address}
+        </p>
+        <p>
+          <strong>Description:</strong> {store.description}
+        </p>
+        <p>
+          <strong>Open Hours:</strong> {store.openHours}
+        </p>
+        <p className="store-rating">
+          <strong>Rating:</strong>{" "}
+          {averageRating !== null ? averageRating.toFixed(1) : "No reviews yet"}
+        </p>
+        {store.website && (
+          <p className="store-website">
+            <a href={store.website} target="_blank" rel="noopener noreferrer">
+              Visit Website
+            </a>
+          </p>
         )}
-      </ul>
+      </div>
+
+      <section className="reviews-section">
+        <h3>Reviews</h3>
+        <ul className="reviews-list">
+          {store.reviews && store.reviews.length > 0 ? (
+            store.reviews.map((r) => (
+              <li key={r.id} className="review-item">
+                <p>
+                  <strong>Rating:</strong> {r.rating}
+                </p>
+                <p className="review-text">{r.text}</p>
+                {currentUserId === r.userId && (
+                  <button
+                    className="delete-review-btn"
+                    onClick={() => handleDeleteReview(r.id)}
+                    disabled={deletingReviewId === r.id}
+                  >
+                    {deletingReviewId === r.id ? "Deleting..." : "Delete"}
+                  </button>
+                )}
+              </li>
+            ))
+          ) : (
+            <li>No reviews yet.</li>
+          )}
+        </ul>
+      </section>
 
       {user ? (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="review-form">
           <h4>Add your review</h4>
-          <label>
+          <label htmlFor="review-text">
             Review:
             <input
+              id="review-text"
               type="text"
               value={newReviewText}
               onChange={(e) => setNewReviewText(e.target.value)}
+              className="review-input"
             />
           </label>
           <br />
-          <label>
+          <label htmlFor="review-rating">
             Rating (1-5):
             <input
+              id="review-rating"
               type="number"
               min={1}
               max={5}
               value={newReviewRating}
               onChange={(e) => setNewReviewRating(Number(e.target.value))}
+              className="rating-input"
             />
           </label>
           <br />
-          <button type="submit">Submit Review</button>
-          {message && <p>{message}</p>}
+          <button type="submit" className="submit-review-btn">
+            Submit Review
+          </button>
+          {message && <p className="form-message">{message}</p>}
         </form>
       ) : (
-        <p>You must be logged in to leave a review.</p>
+        <p className="login-message">
+          You must be logged in to leave a review.
+        </p>
       )}
     </div>
   );
