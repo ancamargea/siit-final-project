@@ -21,7 +21,54 @@ a:hover {
   text-decoration: underline;
 }
 
-/* Header */
+/* NAVIGATION */
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #222;
+  color: #fff;
+}
+
+.nav-center,
+.nav-right {
+  list-style: none;
+  display: flex;
+  gap: 1.2rem;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+}
+
+.nav-right li {
+  margin-left: 0.8rem;
+}
+
+.nav-right button {
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font: inherit;
+  padding: 0;
+}
+
+.nav-center a,
+.nav-right a,
+.nav-right button {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.nav-center a:hover,
+.nav-right a:hover,
+.nav-right button:hover {
+  text-decoration: underline;
+}
+
+/* HEADER */
 .site-header {
   display: flex;
   justify-content: space-between;
@@ -36,20 +83,20 @@ a:hover {
   font-weight: 600;
 }
 
-/* Container */
+/* CONTAINER */
 .container {
   max-width: 900px;
   margin: 0 auto;
 }
 
-/* Store List */
+/* STORE LIST */
 .store-list {
   display: grid;
   gap: 1.5rem;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 }
 
-/* Store Card */
+/* STORE CARD */
 .store-card {
   background-color: #222;
   border-radius: 8px;
@@ -62,7 +109,7 @@ a:hover {
   transform: scale(1.03);
 }
 
-/* Store info text */
+/* STORE INFO TEXT */
 .store-card h3,
 .store-card p {
   margin-bottom: 0.6rem;
