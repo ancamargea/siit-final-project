@@ -10,15 +10,20 @@ app.db = router.db;
 
 app.use(cors());
 app.use(middlewares);
-app.use(jsonServer.bodyParser);
-
 app.use(auth);
 
+// Force middleware after auth
 app.use((req, res, next) => {
-  if (req.method === "POST" && req.path === "/reviews") {
-    req.body.storeId = Number(req.body.storeId);
-    req.body.userId = Number(req.body.userId);
-    req.body.rating = Number(req.body.rating);
+  if (["POST", "PUT", "PATCH"].includes(req.method)) {
+    if (req.body.storeId && typeof req.body.storeId === "string") {
+      req.body.storeId = Number(req.body.storeId);
+      console.log("✅ Coerced storeId to number");
+    }
+
+    if (req.body.userId && typeof req.body.userId === "string") {
+      req.body.userId = Number(req.body.userId);
+      console.log("✅ Coerced userId to number");
+    }
   }
   next();
 });

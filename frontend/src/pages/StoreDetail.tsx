@@ -34,10 +34,18 @@ export default function StoreDetail() {
 
   async function fetchStore() {
     try {
-      const res = await fetch(`http://localhost:4000/stores/${id}`);
-      if (!res.ok) throw new Error("Failed to fetch store details");
-      const data = await res.json();
-      setStore(data);
+      const storeRes = await fetch(`http://localhost:4000/stores/${id}`);
+      if (!storeRes.ok) throw new Error("Failed to fetch store details");
+      const storeData = await storeRes.json();
+
+      const reviewsRes = await fetch(
+        `http://localhost:4000/reviews?storeId=${id}`
+      );
+      if (!reviewsRes.ok) throw new Error("Failed to fetch reviews");
+      const reviewsData = await reviewsRes.json();
+
+      storeData.reviews = reviewsData;
+      setStore(storeData);
     } catch (err: any) {
       setError(err.message || "Something went wrong");
     }
@@ -57,7 +65,7 @@ export default function StoreDetail() {
     }
 
     try {
-      const res = await fetch(`http://localhost:4000/stores/${id}/reviews`, {
+      const res = await fetch("http://localhost:4000/reviews", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -66,6 +74,7 @@ export default function StoreDetail() {
           userId: user?.id,
           text: newReviewText,
           rating: newReviewRating,
+          storeId: Number(id), // ensures it's saved as a number
         }),
       });
 
@@ -75,7 +84,6 @@ export default function StoreDetail() {
       setNewReviewRating(0);
       setMessage("Review added!");
 
-      // Re-fetch the store details to update the reviews list
       await fetchStore();
     } catch {
       setMessage("Failed to add review.");

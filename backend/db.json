@@ -87,5 +87,20 @@
       "id": 6
     }
   ],
-  "reviews": []
+  "reviews": [
+    {
+      "userId": 3,
+      "text": "Great selection and friendly staff!",
+      "rating": 5,
+      "storeId": 1,
+      "id": 1
+    },
+    {
+      "userId": 3,
+      "text": "Good assortment of styles. Very helpful staff.  There is hardly a time when I stepped through their door and left empty handed.",
+      "rating": 5,
+      "storeId": 2,
+      "id": 2
+    }
+  ]
 }
