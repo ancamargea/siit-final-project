@@ -2,316 +2,60 @@
   "users": [
     {
       "id": 1,
-      "email": "contact@nicherecords.ro",
-      "password": "Password1!",
-      "firstName": "Niche",
-      "lastName": "Records",
+      "email": "admin1@contact.ro",
+      "password": "AdminOne",
+      "firstName": "Testing",
+      "lastName": "Admin",
       "role": "owner"
     },
     {
-      "id": 2,
-      "email": "contact@twosidesrecords.com",
-      "password": "Password2!",
-      "firstName": "TwoSides",
-      "lastName": "Records",
-      "role": "owner"
-    },
-    {
-      "id": 3,
       "email": "anca.margea@webcomplete.com",
-      "password": "User_password3",
+      "password": "$2a$10$iUqPtLRS17wkvfjzU/2Mv.b1j2S347TJ3JqDmqGb4wnGUvxZugGrS",
       "firstName": "Anca",
       "lastName": "Margea",
-      "role": "user"
-    },
-    {
-      "id": 4,
-      "email": "andrei.pan@webcomplete.com",
-      "password": "User_password4",
-      "firstName": "Andrei",
-      "lastName": "Panduru",
-      "role": "user"
-    },
-    {
-      "id": 5,
-      "email": "ana.bogdan@webcomplete.com",
-      "password": "User_password3",
-      "firstName": "Ana",
-      "lastName": "Bogdan",
-      "role": "user"
-    },
-    {
-      "id": 6,
-      "email": "vali@rockshop.ro",
-      "password": "Password6!",
-      "firstName": "Vali",
-      "lastName": "RockShop",
-      "role": "owner"
-    },
-    {
-      "id": 7,
-      "email": "office@jaddrecords.ro",
-      "password": "Password7!",
-      "firstName": "Jadd",
-      "lastName": "Records",
-      "role": "owner"
-    },
-    {
-      "id": 8,
-      "email": "calin.eugen@webcomplete.com",
-      "password": "User_password8",
-      "firstName": "Calin",
-      "lastName": "Eugen",
-      "role": "user"
-    },
-    {
-      "id": 9,
-      "email": "hello@melomelanj.ro",
-      "password": "Password9!",
-      "firstName": "Melo",
-      "lastName": "Melanj",
-      "role": "owner"
-    },
-    {
-      "id": 10,
-      "email": "la.vinil@lavinil.ro",
-      "password": "Password10!",
-      "firstName": "La Vinil",
-      "lastName": "Cluj",
-      "role": "owner"
-    },
-    {
-      "id": 11,
-      "email": "diana.condrea@webcomplete.com",
-      "password": "User_password11",
-      "firstName": "Diana",
-      "lastName": "Condrea",
-      "role": "user"
-    },
-    {
-      "id": 12,
-      "email": "vlad.dosa@webcomplete.com",
-      "password": "User_password12",
-      "firstName": "Vlad",
-      "lastName": "Dosa",
-      "role": "user"
-    },
-    {
-      "id": 13,
-      "email": "doru.pop@webcomplete.com",
-      "password": "User_password13",
-      "firstName": "Doru",
-      "lastName": "Pop",
-      "role": "user"
-    },
-    {
-      "id": 14,
-      "email": "DustySoundsRecords@gmail.com",
-      "password": "Password14!",
-      "firstName": "Dusty Sounds",
-      "lastName": "Records",
-      "role": "owner"
-    },
-    {
-      "id": 15,
-      "email": "adi.muntean@webcomplete.com",
-      "password": "User_password15",
-      "firstName": "Adrian",
-      "lastName": "Muntean",
-      "role": "user"
-    },
-    {
-      "id": 16,
-      "email": "lucian.marin@webcomplete.com",
-      "password": "User_password16",
-      "firstName": "Lucian",
-      "lastName": "Marin",
-      "role": "user"
-    },
-    {
-      "email": "Test2@example.com",
-      "password": "$2a$10$mOga0waiebYDD7XM.OM7QeX9xg3A.t2M2fjeKCJ.4MwjyBToiIwqG",
-      "firstName": "New",
-      "lastName": "User",
-      "role": "user",
-      "id": 17
-    },
-    {
-      "email": "Owner1@example.com",
-      "password": "$2a$10$QRZ6jWbz9XZhvE8VYOu9d.YGMlIxSRBgJynJmE7VM74X8PCLPw1Fy",
-      "firstName": "Store",
-      "lastName": "Owner",
       "role": "owner",
-      "id": 18
+      "id": 2
+    },
+    {
+      "email": "andrei.pan@webcomplete.com",
+      "password": "$2a$10$Qngg0LCImFHjFFKBNKSSzOHdmOzMN.Mh0kf4yhXsnrINLxUqrmMt2",
+      "firstName": "Andrei",
+      "lastName": "Pandurul",
+      "role": "owner",
+      "id": 3
     }
   ],
   "stores": [
     {
-      "id": 1,
-      "ownerId": 1,
-      "name": "Niche Records",
-      "city": "București",
-      "address": "Strada Arcușului 6A, Sector 3",
-      "description": "Online music store",
-      "openHours": "10:00 - 20:00",
-      "rating": 4.8,
-      "website": "https://www.nicherecords.ro"
-    },
-    {
-      "id": 2,
-      "ownerId": 1,
-      "name": "Two Sides Records",
-      "city": "București",
-      "address": "Calea Victoriei 153",
-      "description": "A venue run by music enthusiasts/ record collectors/ art/ stories/ coffee & nature lovers.",
-      "openHours": "12:00 - 21:00",
-      "rating": 4.8,
-      "website": "twosidesrecords.com"
-    },
-    {
-      "id": 3,
-      "ownerId": 6,
-      "name": "RockShop",
-      "city": "București",
-      "address": "Calea Victoriei 153",
-      "description": "A venue run by music enthusiasts/ record collectors/ art/ stories/ coffee & nature lovers.",
-      "openHours": "10:30 - 19:00",
-      "rating": 4.5,
-      "website": "https://www.rockshop.ro"
-    },
-    {
-      "id": 4,
-      "ownerId": 7,
-      "name": "Jadd Records",
-      "city": "București",
-      "address": "Strada Anastasie Panu 6, Sector 3",
-      "description": "Online music store",
-      "openHours": "09:00 - 16:00",
-      "rating": 4.9,
-      "website": "https://www.jaddrecords.ro"
-    },
-    {
-      "id": 5,
-      "ownerId": 9,
       "name": "Melo Melanj",
       "city": "Cluj-Napoca",
       "address": "Strada Universității 6, Casa TIFF",
       "description": "Independent vinyl music store from Cluj-Napoca.",
       "openHours": "16:00 - 20:00",
-      "rating": 4.8,
-      "website": "https://www.melomelanj.ro"
+      "rating": 5,
+      "website": "https://www.melomelanj.ro",
+      "id": 1
     },
     {
-      "id": 6,
-      "ownerId": 10,
       "name": "La Vinil",
       "city": "Cluj-Napoca",
       "address": "Strada Napoca 5",
       "description": "Romanian vinyls.",
       "openHours": "16:00 - 20:00",
-      "rating": 4.8,
-      "website": "https://www.lavinil.ro"
+      "rating": 4,
+      "website": "https://www.lavinil.ro",
+      "id": 2
     },
     {
-      "id": 7,
-      "ownerId": 1,
       "name": "Dusty Sounds Records",
       "city": "Cluj-Napoca",
       "address": "Bulevardul Eroilor 31",
       "description": "Selling and buying old records. Genre: rock, jazz, pop, electronic",
       "openHours": "13:30 - 19:00",
-      "rating": 4.8,
-      "website": "https://www.facebook.com/DustySoundsRecordShop"
+      "rating": 5,
+      "website": "https://www.facebook.com/DustySoundsRecordShop",
+      "id": 3
     }
   ],
-  "reviews": [
-    {
-      "id": 1,
-      "storeId": 2,
-      "userId": 3,
-      "rating": 5,
-      "text": "Great selection and friendly staff!",
-      "date": "2025-07-07"
-    },
-    {
-      "id": 2,
-      "storeId": 3,
-      "userId": 5,
-      "rating": 3,
-      "text": "They wouldn't let me pay with card, only cash. Otherwise, pretty good selection of vinyls.",
-      "date": "2025-07-02"
-    },
-    {
-      "id": 3,
-      "storeId": 3,
-      "userId": 4,
-      "rating": 5,
-      "text": "Good assortment of styles,  both mint and second hand. Very helpful staff.  There is hardly a time when I stepped through their door and left empty handed.",
-      "date": "2025-07-02"
-    },
-    {
-      "id": 4,
-      "storeId": 4,
-      "userId": 5,
-      "rating": 5,
-      "text": "Lots of cool records, super kind seller. Giving good hints and amazing inspiration! For every vinyl fan, a cool place to go.",
-      "date": "2025-06-13"
-    },
-    {
-      "id": 5,
-      "storeId": 6,
-      "userId": 9,
-      "rating": 5,
-      "text": "Visited last year for Record Store Day. Excellent selection of vinyls, including some great exclusives. The atmosphere was warm and welcoming, and you can tell there’s a lot of passion behind the shop. Definitely worth checking out if you’re into vinyl!",
-      "date": "2025-04-08"
-    },
-    {
-      "id": 6,
-      "storeId": 4,
-      "userId": 8,
-      "rating": 5,
-      "text": "I will allways buy records from guys who knows what they are selling! Catalin is one of them! Very good quality records, only good music: jazz, improvised music, rock, progressive rock, electronic, contemporary music. The right music for me and my friends! I warmly recomand you this music shop!",
-      "date": "2025-05-24"
-    },
-    {
-      "id": 7,
-      "storeId": 5,
-      "userId": 11,
-      "rating": 4,
-      "text": "Some fine selection of exquisite tunes. A record store worth visiting.",
-      "date": "2024-07-03"
-    },
-    {
-      "id": 8,
-      "storeId": 6,
-      "userId": 12,
-      "rating": 4,
-      "text": "Some fine selection of exquisite tunes. A record store worth visiting.",
-      "date": "2024-07-03"
-    },
-    {
-      "id": 9,
-      "storeId": 5,
-      "userId": 13,
-      "rating": 5,
-      "text": "Best record store of cluj! Nice chat, time and patience to play and try records. Definitely worth it!",
-      "date": "2024-11-08"
-    },
-    {
-      "id": 10,
-      "storeId": 7,
-      "userId": 15,
-      "rating": 5,
-      "text": "I'm very pleased to see that such places still exist and that people keep showing interest in their activity. I've recently acquired a record player and was looking around websites for some new records to buy, ended up visiting this store.",
-      "date": "2023-03-17"
-    },
-    {
-      "id": 11,
-      "storeId": 7,
-      "userId": 16,
-      "rating": 5,
-      "text": "Excellent. I finally made it here after missing out in my last two visits to Cluj. The shop is in an alleyway, hard to miss if you pay attention to the signs.",
-      "date": "2023-09-21"
-    }
-  ]
+  "reviews": []
 }

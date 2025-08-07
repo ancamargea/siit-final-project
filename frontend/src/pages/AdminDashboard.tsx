@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 type Store = {
-  storeId: number;
+  id: number; // Changed from storeId to id for consistency
   name: string;
   city: string;
 };
@@ -46,7 +46,6 @@ function AdminDashboard() {
 
   if (error) return <p>{error}</p>;
 
-  // Calculate total reviews and average rating for a store
   function getStoreReviews(storeId: number) {
     const storeReviews = reviews.filter((r) => r.storeId === storeId);
     const total = storeReviews.length;
@@ -55,7 +54,6 @@ function AdminDashboard() {
     return { total, average: (sum / total).toFixed(1) };
   }
 
-  // Stores list and their reviews info
   return (
     <div>
       <h2>Your Stores</h2>
@@ -68,14 +66,15 @@ function AdminDashboard() {
       ) : (
         <ul>
           {stores.map((store) => {
-            const { total, average } = getStoreReviews(store.storeId);
+            const { total, average } = getStoreReviews(store.id);
             return (
-              <li key={store.storeId} style={{ marginBottom: "1rem" }}>
+              <li key={store.id} style={{ marginBottom: "1rem" }}>
                 <strong>{store.name}</strong> — {store.city}
                 <br />
                 Reviews: {total} | Avg Rating: {average}
                 <br />
-                <Link to={`/admin/edit-store/${store.storeId}`}>
+                {/* Use store.id here, matching your route param */}
+                <Link to={`/stores/${store.id}/edit`}>
                   <button>Edit</button>
                 </Link>
               </li>

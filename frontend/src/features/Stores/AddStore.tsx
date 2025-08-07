@@ -6,6 +6,7 @@ function AddStore() {
   const [formData, setFormData] = useState({
     name: "",
     city: "",
+    address: "",
     description: "",
     openHours: "",
     rating: "",
@@ -73,6 +74,13 @@ function AddStore() {
           name="city"
           placeholder="City"
           value={formData.city}
+          onChange={handleChange}
+        />
+
+        <input
+          name="address"
+          placeholder="Address"
+          value={formData.address}
           onChange={handleChange}
         />
         <textarea

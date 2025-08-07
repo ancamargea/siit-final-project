@@ -18,12 +18,12 @@ export default function EditStore() {
   const [loading, setLoading] = useState(true);
   const [message, setMessage] = useState("");
 
-  // Block users not logged in or not owners
   useEffect(() => {
     if (!user) {
       navigate("/login");
       return;
     }
+
     if (user.role !== "owner") {
       setMessage("You do not have permission to edit stores.");
       setLoading(false);
@@ -70,6 +70,11 @@ export default function EditStore() {
       return;
     }
 
+    if (!id) {
+      setMessage("Store ID is missing.");
+      return;
+    }
+
     const updatedStore = {
       name,
       city,
@@ -93,17 +98,16 @@ export default function EditStore() {
       if (!res.ok) throw new Error("Update failed");
 
       setMessage("Store updated!");
-      navigate("/admin"); // redirect back to admin dashboard
+      navigate("/admin");
     } catch {
       setMessage("Something went wrong.");
     }
   }
 
   if (loading) return <p>Loading store...</p>;
-
-  if (message === "You do not have permission to edit stores.") {
+  if (message === "You do not have permission to edit stores.")
     return <p>{message}</p>;
-  }
+  if (message === "Could not load store.") return <p>{message}</p>;
 
   return (
     <div>
