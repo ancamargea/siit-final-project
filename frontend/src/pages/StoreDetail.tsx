@@ -1,5 +1,13 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { useAuthContext } from "../features/Auth/AuthContext";
+
+type Review = {
+  id: string;
+  userId: string;
+  text: string;
+  rating: number;
+};
 
 type Store = {
   id: number;
@@ -10,29 +18,69 @@ type Store = {
   openHours: string;
   rating: number;
   website?: string;
+  reviews?: Review[];
 };
 
-function StoreDetail() {
+export default function StoreDetail() {
   const { id } = useParams<{ id: string }>();
+  const { user } = useAuthContext();
+
   const [store, setStore] = useState<Store | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [newReviewText, setNewReviewText] = useState("");
+  const [newReviewRating, setNewReviewRating] = useState(0);
+  const [message, setMessage] = useState("");
+
+  async function fetchStore() {
+    try {
+      const res = await fetch(`http://localhost:4000/stores/${id}`);
+      if (!res.ok) throw new Error("Failed to fetch store details");
+      const data = await res.json();
+      setStore(data);
+    } catch (err: any) {
+      setError(err.message || "Something went wrong");
+    }
+  }
 
   useEffect(() => {
-    async function fetchStore() {
-      try {
-        const res = await fetch(`http://localhost:4000/stores/${id}`);
-        if (!res.ok) throw new Error("Failed to fetch store details");
-        const data = await res.json();
-        setStore(data);
-      } catch (err: any) {
-        setError(err.message || "Something went wrong");
-      } finally {
-        setLoading(false);
-      }
-    }
-    fetchStore();
+    setLoading(true);
+    fetchStore().finally(() => setLoading(false));
   }, [id]);
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+
+    if (!newReviewText.trim() || newReviewRating <= 0) {
+      setMessage("Please enter a review text and a rating greater than 0.");
+      return;
+    }
+
+    try {
+      const res = await fetch(`http://localhost:4000/stores/${id}/reviews`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          userId: user?.id,
+          text: newReviewText,
+          rating: newReviewRating,
+        }),
+      });
+
+      if (!res.ok) throw new Error("Failed to add review");
+
+      setNewReviewText("");
+      setNewReviewRating(0);
+      setMessage("Review added!");
+
+      // Re-fetch the store details to update the reviews list
+      await fetchStore();
+    } catch {
+      setMessage("Failed to add review.");
+    }
+  }
 
   if (loading) return <p>Loading store details...</p>;
   if (error) return <p>Error: {error}</p>;
@@ -63,8 +111,50 @@ function StoreDetail() {
           </a>
         </p>
       )}
+
+      <h3>Reviews</h3>
+      <ul>
+        {store.reviews && store.reviews.length > 0 ? (
+          store.reviews.map((r) => (
+            <li key={r.id}>
+              <strong>Rating:</strong> {r.rating} <br />
+              {r.text}
+            </li>
+          ))
+        ) : (
+          <li>No reviews yet.</li>
+        )}
+      </ul>
+
+      {user ? (
+        <form onSubmit={handleSubmit}>
+          <h4>Add your review</h4>
+          <label>
+            Review:
+            <input
+              type="text"
+              value={newReviewText}
+              onChange={(e) => setNewReviewText(e.target.value)}
+            />
+          </label>
+          <br />
+          <label>
+            Rating (1-5):
+            <input
+              type="number"
+              min={1}
+              max={5}
+              value={newReviewRating}
+              onChange={(e) => setNewReviewRating(Number(e.target.value))}
+            />
+          </label>
+          <br />
+          <button type="submit">Submit Review</button>
+          {message && <p>{message}</p>}
+        </form>
+      ) : (
+        <p>You must be logged in to leave a review.</p>
+      )}
     </div>
   );
 }
-
-export default StoreDetail;
