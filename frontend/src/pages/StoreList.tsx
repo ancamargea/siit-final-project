@@ -63,24 +63,29 @@ function StoreList() {
   if (error) return <p>{error}</p>;
 
   return (
-    <div>
-      <h2>Stores</h2>
+    <div className="container">
+      <h2 style={{ marginBottom: "2rem" }}>Vinyl Stores</h2>
       {stores.length === 0 ? (
         <p>No stores found.</p>
       ) : (
-        <ul>
+        <div className="store-list">
           {stores.map((store) => (
-            <li key={store.id}>
-              <Link to={`/stores/${store.id}`}>
-                <strong>{store.name}</strong>
-              </Link>{" "}
-              — {store.city} — Rating:{" "}
-              {store.averageRating !== null
-                ? store.averageRating.toFixed(1)
-                : "N/A"}
-            </li>
+            <div key={store.id} className="store-card">
+              <h3>
+                <Link to={`/stores/${store.id}`} style={{ color: "#1db954" }}>
+                  {store.name}
+                </Link>
+              </h3>
+              <p>City: {store.city}</p>
+              <p>
+                Rating:{" "}
+                {store.averageRating !== null
+                  ? store.averageRating.toFixed(1)
+                  : "N/A"}
+              </p>
+            </div>
           ))}
-        </ul>
+        </div>
       )}
     </div>
   );

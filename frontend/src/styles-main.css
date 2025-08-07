@@ -29,6 +29,7 @@ a:hover {
   padding: 1rem 2rem;
   background-color: #222;
   color: #fff;
+  margin-bottom: 2.5rem;
 }
 
 .nav-center,
@@ -75,7 +76,7 @@ a:hover {
   align-items: center;
   padding-bottom: 1rem;
   border-bottom: 1px solid #333;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
 }
 
 .site-header nav a {
@@ -87,6 +88,12 @@ a:hover {
 .container {
   max-width: 900px;
   margin: 0 auto;
+  padding-top: 1rem;
+}
+
+/* TITLE */
+h2 {
+  margin-bottom: 2rem;
 }
 
 /* STORE LIST */
@@ -94,6 +101,8 @@ a:hover {
   display: grid;
   gap: 1.5rem;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  list-style: none;
+  padding-left: 0;
 }
 
 /* STORE CARD */
@@ -118,4 +127,64 @@ a:hover {
 .store-card a {
   font-weight: 700;
   color: #1db954;
+}
+
+/* BUTTONS */
+.button-primary,
+button[type="submit"] {
+  background-color: #1db954;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  font-weight: 700;
+  color: #121212;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.button-primary:hover,
+button[type="submit"]:hover {
+  background-color: #17a44d;
+  transform: translateY(-1px);
+}
+
+.button-secondary {
+  background-color: #444;
+  color: #eee;
+  padding: 0.6rem 1.2rem;
+  border: 1px solid #666;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.button-secondary:hover {
+  background-color: #555;
+}
+
+/* FORM TEXTAREA: Only in store pages */
+.store-form-page textarea {
+  min-height: 120px;
+  padding: 0.6rem;
+  font-size: 1rem;
+  border-radius: 4px;
+  border: 1px solid #444;
+  resize: vertical;
+  background-color: #1a1a1a;
+  color: #eee;
+}
+
+.store-form-page input,
+.review-form-page input {
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border-radius: 4px;
+  border: 1px solid #444;
+  background-color: #1a1a1a;
+  color: #eee;
+  font-size: 1rem;
+  width: 100%;
 }

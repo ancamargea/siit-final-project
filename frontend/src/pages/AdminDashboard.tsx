@@ -25,11 +25,9 @@ function AdminDashboard() {
       return;
     }
 
-    // Decode token to get user id
     const user = JSON.parse(atob(token.split(".")[1]));
     const ownerId = user.id;
 
-    // Fetch stores owned by this user
     fetch(`http://localhost:4000/stores?ownerId=${ownerId}`, {
       headers: { Authorization: `Bearer ${token}` },
     })
@@ -37,14 +35,11 @@ function AdminDashboard() {
       .then(setStores)
       .catch(() => setError("Failed to load stores"));
 
-    // Fetch all reviews
     fetch("http://localhost:4000/reviews")
       .then((res) => res.json())
       .then(setReviews)
       .catch(() => setError("Failed to load reviews"));
   }, []);
-
-  if (error) return <p>{error}</p>;
 
   function getStoreReviews(storeId: number) {
     const storeReviews = reviews.filter((r) => r.storeId === storeId);
@@ -54,27 +49,35 @@ function AdminDashboard() {
     return { total, average: (sum / total).toFixed(1) };
   }
 
+  if (error) return <p className="error-text">{error}</p>;
+
   return (
-    <div>
-      <h2>Your Stores</h2>
-      <Link to="/admin/add-store">
-        <button style={{ marginBottom: "1rem" }}>Add New Store</button>
-      </Link>
+    <div className="container">
+      <div className="site-header">
+        <h2>Your Stores</h2>
+        <Link to="/admin/add-store" className="button-primary">
+          Add New Store
+        </Link>
+      </div>
 
       {stores.length === 0 ? (
         <p>No stores found.</p>
       ) : (
-        <ul>
+        <ul className="store-list">
           {stores.map((store) => {
             const { total, average } = getStoreReviews(store.id);
             return (
-              <li key={store.id} style={{ marginBottom: "1rem" }}>
-                <strong>{store.name}</strong> — {store.city}
-                <br />
-                Reviews: {total} | Avg Rating: {average}
-                <br />
-                <Link to={`/stores/${store.id}/edit`}>
-                  <button>Edit</button>
+              <li key={store.id} className="store-card">
+                <h3>{store.name}</h3>
+                <p>City: {store.city}</p>
+                <p>
+                  Reviews: {total} | Avg Rating: {average}
+                </p>
+                <Link
+                  to={`/stores/${store.id}/edit`}
+                  className="button-secondary"
+                >
+                  Edit Store
                 </Link>
               </li>
             );
