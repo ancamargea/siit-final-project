@@ -107,7 +107,7 @@ export default function EditStore() {
   if (message === "Could not load store.") return <p>{message}</p>;
 
   return (
-    <div>
+    <div className="store-form-page">
       <h2>Edit Store</h2>
       {message && <p>{message}</p>}
       <form onSubmit={handleSubmit}>

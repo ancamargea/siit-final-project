@@ -58,7 +58,7 @@ function AddStore() {
   };
 
   return (
-    <div>
+    <div className="store-form-page">
       <h2>Add Store</h2>
       <form onSubmit={handleSubmit}>
         <input
