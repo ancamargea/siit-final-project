@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 type Store = {
-  id: number; // Changed from storeId to id for consistency
+  id: number;
   name: string;
   city: string;
 };
@@ -73,7 +73,6 @@ function AdminDashboard() {
                 <br />
                 Reviews: {total} | Avg Rating: {average}
                 <br />
-                {/* Use store.id here, matching your route param */}
                 <Link to={`/stores/${store.id}/edit`}>
                   <button>Edit</button>
                 </Link>

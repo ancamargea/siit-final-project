@@ -21,7 +21,7 @@ type Store = {
   reviews?: Review[];
 };
 
-export default function StoreDetail() {
+function StoreDetail() {
   const { id } = useParams<{ id: string }>();
   const { user } = useAuthContext();
 
@@ -74,7 +74,7 @@ export default function StoreDetail() {
           userId: user?.id,
           text: newReviewText,
           rating: newReviewRating,
-          storeId: Number(id), // ensures it's saved as a number
+          storeId: Number(id),
         }),
       });
 
@@ -89,6 +89,13 @@ export default function StoreDetail() {
       setMessage("Failed to add review.");
     }
   }
+
+  // Calculate average rating from reviews
+  const averageRating =
+    store?.reviews && store.reviews.length > 0
+      ? store.reviews.reduce((acc, r) => acc + r.rating, 0) /
+        store.reviews.length
+      : null;
 
   if (loading) return <p>Loading store details...</p>;
   if (error) return <p>Error: {error}</p>;
@@ -110,7 +117,8 @@ export default function StoreDetail() {
         <strong>Open Hours:</strong> {store.openHours}
       </p>
       <p>
-        <strong>Rating:</strong> {store.rating.toFixed(1)}
+        <strong>Rating:</strong>{" "}
+        {averageRating !== null ? averageRating.toFixed(1) : "No reviews yet"}
       </p>
       {store.website && (
         <p>
@@ -166,3 +174,5 @@ export default function StoreDetail() {
     </div>
   );
 }
+
+export default StoreDetail;

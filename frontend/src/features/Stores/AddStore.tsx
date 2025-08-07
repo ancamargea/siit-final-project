@@ -9,7 +9,6 @@ function AddStore() {
     address: "",
     description: "",
     openHours: "",
-    rating: "",
     website: "",
   });
 
@@ -42,7 +41,6 @@ function AddStore() {
         },
         body: JSON.stringify({
           ...formData,
-          rating: Number(formData.rating),
           ownerId,
         }),
       });
@@ -52,7 +50,6 @@ function AddStore() {
         return;
       }
 
-      // Redirect to admin dashboard (or wherever you want)
       navigate("/admin");
     } catch (err) {
       console.error("Error creating store:", err);
@@ -76,7 +73,6 @@ function AddStore() {
           value={formData.city}
           onChange={handleChange}
         />
-
         <input
           name="address"
           placeholder="Address"
@@ -93,13 +89,6 @@ function AddStore() {
           name="openHours"
           placeholder="Open Hours"
           value={formData.openHours}
-          onChange={handleChange}
-        />
-        <input
-          name="rating"
-          type="number"
-          placeholder="Rating"
-          value={formData.rating}
           onChange={handleChange}
         />
         <input

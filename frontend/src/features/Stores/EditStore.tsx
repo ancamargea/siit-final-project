@@ -12,7 +12,6 @@ export default function EditStore() {
   const [address, setAddress] = useState("");
   const [description, setDescription] = useState("");
   const [openHours, setOpenHours] = useState("");
-  const [rating, setRating] = useState(1);
   const [website, setWebsite] = useState("");
 
   const [loading, setLoading] = useState(true);
@@ -50,7 +49,6 @@ export default function EditStore() {
         setAddress(data.address || "");
         setDescription(data.description || "");
         setOpenHours(data.openHours || "");
-        setRating(data.rating || 1);
         setWebsite(data.website || "");
       } catch (err) {
         setMessage("Could not load store.");
@@ -81,7 +79,6 @@ export default function EditStore() {
       address,
       description,
       openHours,
-      rating,
       website,
     };
 
@@ -150,17 +147,6 @@ export default function EditStore() {
           <input
             value={openHours}
             onChange={(e) => setOpenHours(e.target.value)}
-          />
-        </label>
-        <br />
-        <label>
-          Rating (1–5):
-          <input
-            type="number"
-            min={1}
-            max={5}
-            value={rating}
-            onChange={(e) => setRating(Number(e.target.value))}
           />
         </label>
         <br />
