@@ -22,17 +22,29 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+
+        {/* Profile edit for both regular users and admins */}
         <Route
           path="/profile"
           element={
-            <PrivateRoute>
+            <PrivateRoute allowedRoles={["user", "owner"]}>
               <Profile />
             </PrivateRoute>
           }
         />
+
         <Route path="/stores" element={<StoreList />} />
         <Route path="/stores/:id" element={<StoreDetail />} />
-        <Route path="/admin" element={<AdminDashboard />} />
+
+        {/* Admin dashboard page — only for owners */}
+        <Route
+          path="/admin"
+          element={
+            <PrivateRoute allowedRoles={["owner"]}>
+              <AdminDashboard />
+            </PrivateRoute>
+          }
+        />
 
         <Route
           path="/admin/add-store"
@@ -43,15 +55,17 @@ function App() {
           }
         />
 
+        {/* Edit store: allowed for both users and owners */}
         <Route
           path="/stores/:id/edit"
           element={
-            <PrivateRoute allowedRoles={["owner"]}>
+            <PrivateRoute allowedRoles={["user", "owner"]}>
               <EditStore />
             </PrivateRoute>
           }
         />
 
+        {/* Logged-in users can leave reviews */}
         <Route
           path="/stores/:id/review"
           element={

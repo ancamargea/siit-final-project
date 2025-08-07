@@ -18,10 +18,10 @@
     },
     {
       "email": "andrei.pan@webcomplete.com",
-      "password": "$2a$10$Qngg0LCImFHjFFKBNKSSzOHdmOzMN.Mh0kf4yhXsnrINLxUqrmMt2",
+      "password": "$2a$10$6i9Ip3nq6TVqgAuBENUaSOXCL04YMcGhCIrpvYD8LlvRRzOmmcFWq",
       "firstName": "Andrei",
       "lastName": "Pandurul",
-      "role": "owner",
+      "role": "user",
       "id": 3
     }
   ],
