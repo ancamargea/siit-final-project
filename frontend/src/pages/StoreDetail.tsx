@@ -3,8 +3,8 @@ import { useParams } from "react-router-dom";
 import { useAuthContext } from "../features/Auth/AuthContext";
 
 type Review = {
-  id: string;
-  userId: string;
+  id: number;
+  userId: number;
   text: string;
   rating: number;
 };
@@ -16,7 +16,6 @@ type Store = {
   address: string;
   description: string;
   openHours: string;
-  rating: number;
   website?: string;
   reviews?: Review[];
 };
@@ -31,6 +30,9 @@ function StoreDetail() {
   const [newReviewText, setNewReviewText] = useState("");
   const [newReviewRating, setNewReviewRating] = useState(0);
   const [message, setMessage] = useState("");
+  const [deletingReviewId, setDeletingReviewId] = useState<number | null>(null);
+
+  const currentUserId = user ? Number(user.id) : null;
 
   async function fetchStore() {
     try {
@@ -46,6 +48,7 @@ function StoreDetail() {
 
       storeData.reviews = reviewsData;
       setStore(storeData);
+      setError("");
     } catch (err: any) {
       setError(err.message || "Something went wrong");
     }
@@ -71,7 +74,7 @@ function StoreDetail() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          userId: user?.id,
+          userId: currentUserId,
           text: newReviewText,
           rating: newReviewRating,
           storeId: Number(id),
@@ -87,6 +90,24 @@ function StoreDetail() {
       await fetchStore();
     } catch {
       setMessage("Failed to add review.");
+    }
+  }
+
+  async function handleDeleteReview(reviewId: number) {
+    if (!window.confirm("Are you sure you want to delete this review?")) return;
+
+    setDeletingReviewId(reviewId);
+    try {
+      const res = await fetch(`http://localhost:4000/reviews/${reviewId}`, {
+        method: "DELETE",
+      });
+      if (!res.ok) throw new Error("Failed to delete review");
+      setMessage("Review deleted.");
+      await fetchStore();
+    } catch {
+      setMessage("Failed to delete review.");
+    } finally {
+      setDeletingReviewId(null);
     }
   }
 
@@ -132,9 +153,17 @@ function StoreDetail() {
       <ul>
         {store.reviews && store.reviews.length > 0 ? (
           store.reviews.map((r) => (
-            <li key={r.id}>
+            <li key={r.id} style={{ marginBottom: "1rem" }}>
               <strong>Rating:</strong> {r.rating} <br />
-              {r.text}
+              {r.text} <br />
+              {currentUserId === r.userId && (
+                <button
+                  onClick={() => handleDeleteReview(r.id)}
+                  disabled={deletingReviewId === r.id}
+                >
+                  {deletingReviewId === r.id ? "Deleting..." : "Delete"}
+                </button>
+              )}
             </li>
           ))
         ) : (

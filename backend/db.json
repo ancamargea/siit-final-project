@@ -23,6 +23,14 @@
       "lastName": "Pandurul",
       "role": "user",
       "id": 3
+    },
+    {
+      "email": "ana.bogdan@webcomplete.com",
+      "password": "$2a$10$RUnwiy.sKGsnQ9CeC/AhwOS1CpVzTSXpE7ZWh8afaxyFemKrfK1BC",
+      "firstName": "Ana",
+      "lastName": "Bogdan",
+      "role": "user",
+      "id": 4
     }
   ],
   "stores": [
@@ -101,6 +109,62 @@
       "rating": 5,
       "storeId": 2,
       "id": 2
+    },
+    {
+      "userId": 4,
+      "text": "Some fine selection of exquisite tunes. A record store worth visiting.",
+      "rating": 4,
+      "storeId": 2,
+      "id": 3
+    },
+    {
+      "userId": 4,
+      "text": "Best record store in Cluj! Nice chat, time and patience to play and try records. Definitely worth it!",
+      "rating": 5,
+      "storeId": 1,
+      "id": 4
+    },
+    {
+      "userId": 4,
+      "text": "I'm very pleased to see that such places still exist and that people keep showing interest in their activity. I've recently acquired a record player and was looking around websites for some new records to buy, ended up visiting this store.",
+      "rating": 5,
+      "storeId": 3,
+      "id": 5
+    },
+    {
+      "userId": 4,
+      "text": "Excellent. I finally made it here after missing out in my last two visits to Bucharest. The shop is in an alleyway, hard to miss if you pay attention to the signs.",
+      "rating": 5,
+      "storeId": 4,
+      "id": 6
+    },
+    {
+      "userId": 4,
+      "text": "Worth putting in the effort to find.",
+      "rating": 5,
+      "storeId": 5,
+      "id": 8
+    },
+    {
+      "userId": 3,
+      "text": "Cozy, comfortable home store with a large range of experimental and indie records. The seller was super kind and helpful. A must visit for audiophiles in Bucharest.",
+      "rating": 5,
+      "storeId": 6,
+      "id": 9
+    },
+    {
+      "userId": 3,
+      "text": "Great collection in a cozy place! The neat part is that you can listen to the records before purchasing. Will definitely return!",
+      "rating": 5,
+      "storeId": 5,
+      "id": 10
+    },
+    {
+      "userId": 3,
+      "text": "Cool shop, has some authentic Romanian folk music. They lack a listening station though.",
+      "rating": 4,
+      "storeId": 3,
+      "id": 11
     }
   ]
 }
