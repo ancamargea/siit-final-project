@@ -55,6 +55,36 @@
       "rating": 5,
       "website": "https://www.facebook.com/DustySoundsRecordShop",
       "id": 3
+    },
+    {
+      "name": "Niche Records",
+      "city": "București",
+      "address": "Strada Arcușului 6A, Sector 3",
+      "description": "Online music store",
+      "openHours": "10:00 - 20:00",
+      "rating": 5,
+      "website": "https://www.nicherecords.ro",
+      "id": 4
+    },
+    {
+      "name": "Two Sides Records",
+      "city": "București",
+      "address": "Calea Victoriei 153",
+      "description": "A venue run by music enthusiasts/ record collectors/ art/ stories/ coffee & nature lovers.",
+      "openHours": "12:00 - 21:00",
+      "rating": 5,
+      "website": "https://www.twosidesrecords.com",
+      "id": 5
+    },
+    {
+      "name": "Jadd Records",
+      "city": "București",
+      "address": "Strada Anastasie Panu 6, Sector 3",
+      "description": "Online music store",
+      "openHours": "09:00 - 16:00",
+      "rating": 5,
+      "website": "https://www.jaddrecords.ro",
+      "id": 6
     }
   ],
   "reviews": []
