@@ -25,7 +25,6 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
 
-        {/* Profile edit for both regular users and admins */}
         <Route
           path="/profile"
           element={
@@ -38,7 +37,6 @@ function App() {
         <Route path="/stores" element={<StoreList />} />
         <Route path="/stores/:id" element={<StoreDetail />} />
 
-        {/* Admin dashboard page — only for owners */}
         <Route
           path="/admin"
           element={
@@ -57,7 +55,6 @@ function App() {
           }
         />
 
-        {/* Edit store: allowed for both users and owners */}
         <Route
           path="/stores/:id/edit"
           element={
@@ -67,7 +64,6 @@ function App() {
           }
         />
 
-        {/* Logged-in users can leave reviews */}
         <Route
           path="/stores/:id/review"
           element={

@@ -14,12 +14,12 @@ export function PrivateRoute({ children, allowedRoles }: PrivateRouteProps) {
 
   if (!user) {
     // Not logged in
-    return <Navigate to="/login" />;
+    return <Navigate to="/login" replace />;
   }
 
   if (allowedRoles && !allowedRoles.includes(user.role)) {
     // User does not have permission
-    return <Navigate to="/unauthorized" />;
+    return <Navigate to="/unauthorized" replace />;
   }
 
   return <>{children}</>;

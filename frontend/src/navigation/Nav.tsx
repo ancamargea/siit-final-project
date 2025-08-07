@@ -38,9 +38,10 @@ export function Nav() {
             <li>
               <Link to="/profile">Profile</Link>
             </li>
-            {user.role === "admin" && (
+            {/* Show Admin Dashboard link only if user role is "owner" */}
+            {user.role === "owner" && (
               <li>
-                <Link to="/admin">Admin Dashboard</Link>
+                <Link to="/admin">Admin</Link>
               </li>
             )}
             <li>
