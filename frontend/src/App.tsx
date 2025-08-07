@@ -12,7 +12,9 @@ import { PrivateRoute } from "./features/Auth/PrivateRoute";
 import AddStore from "./features/Stores/AddStore";
 import EditStore from "./features/Stores/EditStore";
 import ReviewStore from "./features/Stores/ReviewStore";
-import "./App.css";
+
+import "./styles-main.css";
+import "./styles-forms.css";
 
 function App() {
   return (
