@@ -9,14 +9,6 @@
       "role": "owner"
     },
     {
-      "email": "anca.margea@webcomplete.com",
-      "password": "$2a$10$iUqPtLRS17wkvfjzU/2Mv.b1j2S347TJ3JqDmqGb4wnGUvxZugGrS",
-      "firstName": "Anca",
-      "lastName": "Margea",
-      "role": "owner",
-      "id": 2
-    },
-    {
       "email": "andrei.pan@webcomplete.com",
       "password": "$2a$10$6i9Ip3nq6TVqgAuBENUaSOXCL04YMcGhCIrpvYD8LlvRRzOmmcFWq",
       "firstName": "Andrei",
@@ -31,6 +23,14 @@
       "lastName": "Bogdan",
       "role": "user",
       "id": 4
+    },
+    {
+      "email": "anca.margea@webcomplete.com",
+      "password": "$2a$10$MsrsvQV7LRcceVuiwmTe2OvHO.xud0G.9dxCXVl.dlfXFsii0W5sW",
+      "firstName": "Anca",
+      "lastName": "Margea",
+      "role": "owner",
+      "id": 5
     }
   ],
   "stores": [
