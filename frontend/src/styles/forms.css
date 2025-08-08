@@ -242,3 +242,63 @@ input[type="number"]:focus {
 .review-form button:hover {
   background-color: #be2523;
 }
+
+/* ===== RESPONSIVE DESIGN ===== */
+/* PHONE - Small devices (max-width: 600px) */
+@media (max-width: 600px) {
+  form {
+    padding: 0.8rem 1rem;
+    max-width: 100%;
+    margin-top: 1rem;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+  }
+
+  label {
+    font-size: 0.9rem;
+    margin-bottom: 0.2rem;
+  }
+
+  input[type="text"],
+  input[type="number"],
+  input[type="email"],
+  input[type="password"],
+  textarea,
+  select {
+    font-size: 0.9rem;
+    padding: 0.45rem;
+  }
+
+  .register-container,
+  .login-container,
+  .profile-container,
+  .add-store-container,
+  .edit-store-container {
+    padding: 0.3rem 0.5rem;
+    max-width: 100%;
+    min-height: auto;
+  }
+
+  .register-container form,
+  .login-container form,
+  .profile-container form,
+  .add-store-container form,
+  .edit-store-container form {
+    padding: 0.8rem 1rem;
+  }
+
+  .secondary-title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .review-form-container {
+    max-width: 100%;
+    margin: 1.5rem auto;
+    padding: 0 1rem;
+  }
+
+  .review-form button {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+  }
+}
