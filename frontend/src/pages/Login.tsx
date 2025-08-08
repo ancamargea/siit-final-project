@@ -40,12 +40,12 @@ export default function Login() {
   }
 
   return (
-    <main>
+    <div className="login-container">
       <h1>Login</h1>
       {error && <p style={{ color: "red" }}>{error}</p>}
       <form onSubmit={handleSubmit}>
         <label>
-          Email:
+          E-mail:
           <input
             type="email"
             value={email}
@@ -53,7 +53,7 @@ export default function Login() {
             required
           />
         </label>
-        <br />
+
         <label>
           Password:
           <input
@@ -63,9 +63,9 @@ export default function Login() {
             required
           />
         </label>
-        <br />
+
         <button type="submit">Log In</button>
       </form>
-    </main>
+    </div>
   );
 }

@@ -86,11 +86,11 @@ function Register() {
   };
 
   return (
-    <div>
+    <div className="register-container">
       <h2>Register</h2>
       <form onSubmit={handleSubmit} noValidate>
         <div>
-          <label>Email:</label>
+          <label>E-mail:</label>
           <input
             type="email"
             name="email"
