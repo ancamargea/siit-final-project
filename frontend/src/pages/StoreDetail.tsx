@@ -146,14 +146,14 @@ function StoreDetail() {
         {store.website && (
           <p className="store-website">
             <a href={store.website} target="_blank" rel="noopener noreferrer">
-              Visit Website
+              VISIT WEBSITE
             </a>
           </p>
         )}
       </div>
 
       <section className="reviews-section">
-        <h3>Reviews</h3>
+        <h2 className="review-title">Reviews</h2>
         <ul className="reviews-list">
           {store.reviews && store.reviews.length > 0 ? (
             store.reviews.map((r) => (

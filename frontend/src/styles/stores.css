@@ -21,7 +21,6 @@
   transform: scale(1.03);
 }
 
-.store-card h3,
 .store-card p {
   margin-bottom: 0.6rem;
 }
@@ -42,35 +41,30 @@
 }
 
 .store-name {
-  color: #ae4340;
-  font-size: 1.8rem;
+  color: #f3dcca;
+  font-family: "Montserrat", Arial, sans-serif;
+  font-weight: 700;
+  font-size: 3rem;
   margin-bottom: 1rem;
+  text-align: left;
+  padding-left: 2rem;
 }
 
 .store-info p {
   margin-bottom: 0.6rem;
   color: #f3dcca;
+  padding-left: 2rem;
 }
 
 .store-website a {
-  color: #ae4340;
+  color: #e98734;
+  font-size: 1rem;
   text-decoration: none;
 }
 
 .store-website a:hover {
   text-decoration: underline;
-  color: #ae4340;
-}
-
-.store-link {
-  color: #ae4340;
-  font-weight: 700;
-  text-decoration: none;
-}
-
-.store-link:hover {
-  color: #be2523;
-  text-decoration: underline;
+  color: #cd4532;
 }
 
 /* REVIEWS */
@@ -86,6 +80,17 @@
   border-radius: 6px;
   margin-bottom: 0.8rem;
   color: #f3dcca;
+}
+
+.review-title {
+  color: #f3dcca;
+  font-family: "Montserrat", Arial, sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  text-align: left;
+  padding-left: 2rem;
 }
 
 .review-text {

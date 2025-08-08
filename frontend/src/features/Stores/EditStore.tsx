@@ -107,13 +107,14 @@ export default function EditStore() {
   if (message === "Could not load store.") return <p>{message}</p>;
 
   return (
-    <div className="store-form-page">
-      <h2>Edit Store</h2>
+    <div className="edit-store-container">
+      <h1 className="secondary-title">Edit Store</h1>
       {message && <p>{message}</p>}
       <form onSubmit={handleSubmit}>
         <label>
           Name:
           <input
+            type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
             required
@@ -123,6 +124,7 @@ export default function EditStore() {
         <label>
           City:
           <input
+            type="text"
             value={city}
             onChange={(e) => setCity(e.target.value)}
             required
@@ -131,7 +133,11 @@ export default function EditStore() {
         <br />
         <label>
           Address:
-          <input value={address} onChange={(e) => setAddress(e.target.value)} />
+          <input
+            type="text"
+            value={address}
+            onChange={(e) => setAddress(e.target.value)}
+          />
         </label>
         <br />
         <label>
@@ -145,6 +151,7 @@ export default function EditStore() {
         <label>
           Open Hours:
           <input
+            type="text"
             value={openHours}
             onChange={(e) => setOpenHours(e.target.value)}
           />
@@ -152,7 +159,11 @@ export default function EditStore() {
         <br />
         <label>
           Website:
-          <input value={website} onChange={(e) => setWebsite(e.target.value)} />
+          <input
+            type="url"
+            value={website}
+            onChange={(e) => setWebsite(e.target.value)}
+          />
         </label>
         <br />
         <button type="submit">Save Changes</button>

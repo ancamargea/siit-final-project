@@ -1,9 +1,25 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { z } from "zod";
+
+const addStoreSchema = z.object({
+  name: z.string().min(1, { message: "Store name is required" }),
+  city: z.string().min(1, { message: "City is required" }),
+  address: z.string().min(1, { message: "Address is required" }),
+  description: z.string().min(1, { message: "Description is required" }),
+  openHours: z.string().min(1, { message: "Open hours are required" }),
+  website: z
+    .string()
+    .url({ message: "Website must be a valid URL" })
+    .optional()
+    .or(z.literal("")),
+});
+
+type AddStoreData = z.infer<typeof addStoreSchema>;
 
 function AddStore() {
   const navigate = useNavigate();
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<AddStoreData>({
     name: "",
     city: "",
     address: "",
@@ -12,27 +28,49 @@ function AddStore() {
     website: "",
   });
 
+  const [errors, setErrors] = useState<
+    Partial<Record<keyof AddStoreData, string>>
+  >({});
+  const [serverError, setServerError] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
+
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const token = localStorage.getItem("accessToken");
-    if (!token) {
-      alert("You must be logged in to add a store.");
+    // Validate
+    const result = addStoreSchema.safeParse(formData);
+    if (!result.success) {
+      const fieldErrors: Partial<Record<keyof AddStoreData, string>> = {};
+      result.error.issues.forEach((err) => {
+        const fieldName = err.path[0] as keyof AddStoreData;
+        fieldErrors[fieldName] = err.message;
+      });
+      setErrors(fieldErrors);
+      setServerError("");
+      setSuccessMessage("");
       return;
     }
 
-    // Decode token to get user id (ownerId)
-    const user = JSON.parse(atob(token.split(".")[1]));
-    const ownerId = user.id;
+    setErrors({});
+    setServerError("");
+    setSuccessMessage("");
+
+    const token = localStorage.getItem("accessToken");
+    if (!token) {
+      setServerError("You must be logged in to add a store.");
+      return;
+    }
 
     try {
+      const user = JSON.parse(atob(token.split(".")[1]));
+      const ownerId = user.id;
+
       const res = await fetch("http://localhost:4000/stores", {
         method: "POST",
         headers: {
@@ -46,59 +84,97 @@ function AddStore() {
       });
 
       if (!res.ok) {
-        alert("Something went wrong while adding the store.");
+        setServerError("Something went wrong while adding the store.");
         return;
       }
 
-      navigate("/admin");
+      setSuccessMessage("Store added successfully!");
+      setTimeout(() => navigate("/admin"), 1000);
     } catch (err) {
       console.error("Error creating store:", err);
-      alert("Failed to add store. Try again.");
+      setServerError("Failed to add store. Try again.");
     }
   };
 
   return (
-    <div className="store-form-page">
-      <h2>Add Store</h2>
-      <form onSubmit={handleSubmit}>
-        <input
-          name="name"
-          placeholder="Name"
-          value={formData.name}
-          onChange={handleChange}
-        />
-        <input
-          name="city"
-          placeholder="City"
-          value={formData.city}
-          onChange={handleChange}
-        />
-        <input
-          name="address"
-          placeholder="Address"
-          value={formData.address}
-          onChange={handleChange}
-        />
-        <textarea
-          name="description"
-          placeholder="Description"
-          value={formData.description}
-          onChange={handleChange}
-        />
-        <input
-          name="openHours"
-          placeholder="Open Hours"
-          value={formData.openHours}
-          onChange={handleChange}
-        />
-        <input
-          name="website"
-          placeholder="Website"
-          value={formData.website}
-          onChange={handleChange}
-        />
-        <button type="submit">Add</button>
+    <div className="add-store-container">
+      <h1 className="secondary-title">Add Store</h1>
+      <form onSubmit={handleSubmit} noValidate>
+        <div>
+          <label>Name:</label>
+          <input
+            type="text"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+          />
+          {errors.name && <p style={{ color: "red" }}>{errors.name}</p>}
+        </div>
+
+        <div>
+          <label>City:</label>
+          <input
+            type="text"
+            name="city"
+            value={formData.city}
+            onChange={handleChange}
+          />
+          {errors.city && <p style={{ color: "red" }}>{errors.city}</p>}
+        </div>
+
+        <div>
+          <label>Address:</label>
+          <input
+            type="text"
+            name="address"
+            value={formData.address}
+            onChange={handleChange}
+          />
+          {errors.address && <p style={{ color: "red" }}>{errors.address}</p>}
+        </div>
+
+        <div>
+          <label>Description:</label>
+          <textarea
+            name="description"
+            value={formData.description}
+            onChange={handleChange}
+          />
+          {errors.description && (
+            <p style={{ color: "red" }}>{errors.description}</p>
+          )}
+        </div>
+
+        <div>
+          <label>Open Hours:</label>
+          <input
+            type="text"
+            name="openHours"
+            value={formData.openHours}
+            onChange={handleChange}
+          />
+          {errors.openHours && (
+            <p style={{ color: "red" }}>{errors.openHours}</p>
+          )}
+        </div>
+
+        <div>
+          <label>Website:</label>
+          <input
+            type="url"
+            name="website"
+            value={formData.website}
+            onChange={handleChange}
+            placeholder="https://example.com"
+          />
+          {errors.website && <p style={{ color: "red" }}>{errors.website}</p>}
+        </div>
+
+        <button type="submit">Add Store</button>
       </form>
+
+      {serverError && <p style={{ color: "red" }}>{serverError}</p>}
+      {successMessage && <p style={{ color: "green" }}>{successMessage}</p>}
     </div>
   );
 }

@@ -43,8 +43,12 @@ textarea:focus {
   border-color: #be2523;
 }
 
-/* REGISTER FORM */
-.register-container {
+/* COMMON FORM STYLES */
+.register-container,
+.login-container,
+.profile-container,
+.add-store-container,
+.edit-store-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -59,87 +63,10 @@ textarea:focus {
   border-radius: 10px;
 }
 
-.register-container form {
-  width: 100%;
-  padding: 1rem 1.5rem;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  border-radius: 8px;
-  background-color: #332f2c;
-  color: #f3dcca;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  box-sizing: border-box;
-}
-
-/* DROPDOWN MENU */
-.register-container select {
-  appearance: none;
-  background: #332f2c
-    url('data:image/svg+xml;utf8,<svg fill="%23f3dcca" height="12" viewBox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>')
-    no-repeat right 10px center;
-  color: #f3dcca;
-  padding: 0.5rem 1.5rem 0.5rem 0.5rem;
-  border: 1px solid #59333a;
-  border-radius: 4px;
-  font-size: 1rem;
-  cursor: pointer;
-}
-
-/* LOGIN FORM */
-.login-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 0.5rem;
-  background-color: rgba(51, 47, 44, 0.8);
-  box-sizing: border-box;
-  width: 100%;
-  max-width: 800px;
-  min-height: 80vh;
-  margin: 0 auto;
-  border-radius: 10px;
-}
-
-.login-container form {
-  width: 100%;
-  padding: 1rem 1.5rem;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  border-radius: 8px;
-  background-color: #332f2c;
-  color: #f3dcca;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  box-sizing: border-box;
-}
-
-.login-title {
-  color: #f3dcca;
-  font-family: "Montserrat", Arial, sans-serif;
-  font-weight: 700;
-  font-size: 3rem;
-  margin-bottom: 1rem;
-}
-
-/* EDIT PROFILE FORM */
-.profile-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 0.5rem;
-  background-color: rgba(51, 47, 44, 0.8);
-  box-sizing: border-box;
-  width: 100%;
-  max-width: 800px;
-  min-height: 80vh;
-  margin: 0 auto;
-  border-radius: 10px;
-}
-
-.profile-container form {
+.register-container form,
+.login-container form,
+.profile-container form,
+.add-store-container form {
   width: 100%;
   padding: 1rem 1.5rem;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
@@ -159,6 +86,94 @@ textarea:focus {
   font-size: 3rem;
   margin-bottom: 1rem;
   text-align: center;
+}
+
+/* DROPDOWN MENU */
+.register-container select {
+  appearance: none;
+  background: #332f2c
+    url('data:image/svg+xml;utf8,<svg fill="%23f3dcca" height="12" viewBox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>')
+    no-repeat right 10px center;
+  color: #f3dcca;
+  padding: 0.5rem 1.5rem 0.5rem 0.5rem;
+  border: 1px solid #59333a;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+/* ADD STORE INPUTS AND SELECTS */
+.add-store-container input[type="text"],
+.add-store-container input[type="url"],
+.add-store-container input[type="number"],
+.add-store-container input[type="email"],
+.add-store-container input[type="password"],
+.add-store-container textarea,
+.add-store-container select {
+  padding: 0.5rem;
+  border-radius: 4px;
+  font-size: 1rem;
+  border: 1px solid #59333a;
+  background-color: #332f2c;
+  color: #f3dcca;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.add-store-container textarea {
+  resize: vertical;
+}
+
+.add-store-container input:focus,
+.add-store-container textarea:focus,
+.add-store-container select:focus {
+  outline: 2px solid #ae4340;
+  background-color: #3c3633;
+  border-color: #be2523;
+}
+
+/* EDIT STORE SPECIFICS */
+.edit-store-container form {
+  width: 100%;
+  padding: 1rem 1.5rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  background-color: #332f2c;
+  color: #f3dcca;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  box-sizing: border-box;
+}
+
+/* EDIT STORE INPUTS AND SELECTS */
+.edit-store-container input[type="text"],
+.edit-store-container input[type="url"],
+.edit-store-container input[type="number"],
+.edit-store-container input[type="email"],
+.edit-store-container input[type="password"],
+.edit-store-container textarea,
+.edit-store-container select {
+  padding: 0.5rem;
+  border-radius: 4px;
+  font-size: 1rem;
+  border: 1px solid #59333a;
+  background-color: #332f2c;
+  color: #f3dcca;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.edit-store-container textarea {
+  resize: vertical;
+}
+
+.edit-store-container input:focus,
+.edit-store-container textarea:focus,
+.edit-store-container select:focus {
+  outline: 2px solid #ae4340;
+  background-color: #3c3633;
+  border-color: #be2523;
 }
 
 /* STORE FORM */
