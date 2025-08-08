@@ -9,11 +9,12 @@
 
 /* STORE CARD */
 .store-card {
-  background-color: #222;
+  background-color: #332f2c;
   border-radius: 8px;
   padding: 1rem;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
   transition: transform 0.2s ease;
+  color: #f3dcca;
 }
 
 .store-card:hover {
@@ -27,35 +28,48 @@
 
 .store-card a {
   font-weight: 700;
-  color: #1db954;
+  color: #f3dcca;
 }
 
 /* STORE DETAIL VIEW */
 .store-detail {
-  background-color: #222;
+  background-color: #332f2c;
   padding: 1rem;
   border-radius: 8px;
   max-width: 700px;
   margin: 0 auto 2rem;
-  color: #eee;
+  color: #f3dcca;
 }
 
 .store-name {
-  color: #1db954;
+  color: #ae4340;
   font-size: 1.8rem;
   margin-bottom: 1rem;
 }
 
 .store-info p {
   margin-bottom: 0.6rem;
+  color: #f3dcca;
 }
 
 .store-website a {
-  color: #1db954;
+  color: #ae4340;
   text-decoration: none;
 }
 
 .store-website a:hover {
+  text-decoration: underline;
+  color: #ae4340;
+}
+
+.store-link {
+  color: #ae4340;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.store-link:hover {
+  color: #be2523;
   text-decoration: underline;
 }
 
@@ -67,13 +81,14 @@
 }
 
 .review-item {
-  background-color: #1a1a1a;
+  background-color: #59333a;
   padding: 0.8rem;
   border-radius: 6px;
   margin-bottom: 0.8rem;
-  color: #ccc;
+  color: #f3dcca;
 }
 
 .review-text {
   font-style: italic;
+  color: #f3dcca;
 }

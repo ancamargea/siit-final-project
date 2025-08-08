@@ -12,10 +12,8 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  color: #eee;
+  color: #f3dcca;
   line-height: 1.5;
-  margin: 0;
-  padding: 0;
   height: 100vh;
   overflow: hidden;
   display: flex;
@@ -23,7 +21,7 @@ body {
 }
 
 a {
-  color: #1db954;
+  color: #ae4340;
   text-decoration: none;
 }
 
@@ -41,11 +39,13 @@ a:hover {
 /* HEADER */
 h1 {
   font-family: "Roboto Mono", monospace;
+  color: #f3dcca;
 }
 
 h2 {
   font-family: "Roboto Mono", monospace;
   margin-bottom: 2rem;
+  color: #f3dcca;
 }
 
 .site-header {
@@ -60,21 +60,20 @@ h2 {
 .site-header nav a {
   margin-left: 1rem;
   font-weight: 600;
+  color: #f3dcca;
 }
 
 /* NAVIGATION */
 .nav-container {
-  background-color: rgba(34, 34, 34, 0.8);
+  background-color: rgba(51, 47, 44, 0.8);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.5rem 3rem;
+  padding: 1rem 2rem;
   margin: 1.5rem auto 2.5rem auto;
-  max-width: 1600px;
-  color: #fff;
-  position: relative;
+  max-width: 100%;
+  color: #f3dcca;
   z-index: 10;
-  border-radius: 8px;
 }
 
 .nav-left {
@@ -82,9 +81,10 @@ h2 {
 }
 
 .site-title {
-  font-family: "Montserrat", sans-serif;
+  font-family: "Montserrat", Arial, sans-serif;
   font-weight: 700;
   font-size: 1.8rem;
+  color: #f3dcca;
 }
 
 .site-title a {
@@ -108,9 +108,9 @@ h2 {
 .nav-center a,
 .nav-right a,
 .nav-right button {
-  color: #fff;
+  color: #f3dcca;
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .nav-center a:hover,
@@ -122,16 +122,14 @@ h2 {
 .nav-right button {
   background: none;
   border: none;
-  color: #fff;
+  color: #f3dcca;
   cursor: pointer;
   font: inherit;
   padding: 0;
 }
 
 .nav-right button.logout-btn {
-  background-color: #1db954;
-  border: none;
-  color: #fff;
+  background-color: #ae4340;
   padding: 0.4rem 1rem;
   border-radius: 6px;
   cursor: pointer;
@@ -145,16 +143,16 @@ h2 {
 }
 
 .nav-right button.logout-btn:hover {
-  background-color: #17a44d;
+  background-color: #be2523;
 }
 
 /* BUTTONS */
 button,
 .button-primary,
 button[type="submit"] {
-  background-color: #1db954;
+  background-color: #59333a;
   border: none;
-  color: #121212;
+  color: #f3dcca;
   padding: 0.6rem 1.2rem;
   border-radius: 6px;
   cursor: pointer;
@@ -168,13 +166,13 @@ button[type="submit"] {
 button:hover,
 .button-primary:hover,
 button[type="submit"]:hover {
-  background-color: #17a44d;
+  background-color: #ae4340;
   transform: translateY(-1px);
 }
 
 .button-secondary {
-  background-color: #444;
-  color: #eee;
+  background-color: #ae4340;
+  color: #f3dcca;
   padding: 0.6rem 1.2rem;
   border: 1px solid #666;
   border-radius: 6px;
@@ -190,12 +188,12 @@ button[type="submit"]:hover {
 /* MESSAGES */
 .message {
   margin-top: 1rem;
-  color: #1db954;
+  color: #f3dcca;
   font-weight: 600;
 }
 
 .message.error {
-  color: #ff4c4c;
+  color: #be2523;
 }
 
 /* HOMEPAGE */
@@ -208,8 +206,8 @@ button[type="submit"]:hover {
 }
 
 .hero-content {
-  color: rgb(41, 41, 41);
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  color: #332f2c;
+  font-family: "Roboto", Arial, sans-serif;
   padding: 2rem;
   border-radius: 10px;
   max-width: 700px;
@@ -223,6 +221,6 @@ button[type="submit"]:hover {
   font-weight: 800;
   font-size: 56px;
   letter-spacing: 0.1em;
-  color: #eee;
+  color: #f3dcca;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
 }

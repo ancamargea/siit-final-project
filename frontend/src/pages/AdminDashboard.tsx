@@ -75,7 +75,7 @@ function AdminDashboard() {
                 </p>
                 <Link
                   to={`/stores/${store.id}/edit`}
-                  className="button-secondary"
+                  className="button-primary"
                 >
                   Edit Store
                 </Link>

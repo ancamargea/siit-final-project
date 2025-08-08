@@ -72,7 +72,7 @@ function StoreList() {
           {stores.map((store) => (
             <div key={store.id} className="store-card">
               <h3>
-                <Link to={`/stores/${store.id}`} style={{ color: "#1db954" }}>
+                <Link to={`/stores/${store.id}`} className="store-link">
                   {store.name}
                 </Link>
               </h3>
