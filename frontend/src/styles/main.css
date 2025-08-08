@@ -70,7 +70,7 @@ a:hover {
 }
 
 .nav-right li {
-  margin-left: 0.8rem;
+  margin-left: 0rem;
 }
 
 .nav-center a,
@@ -94,6 +94,26 @@ a:hover {
   cursor: pointer;
   font: inherit;
   padding: 0;
+}
+
+.nav-right button.logout-btn {
+  background-color: #1db954;
+  border: none;
+  color: #fff;
+  padding: 0.4rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+  line-height: 1.5;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-right button.logout-btn:hover {
+  background-color: #17a44d;
 }
 
 /* BUTTONS */

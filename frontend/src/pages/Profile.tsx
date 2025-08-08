@@ -45,47 +45,49 @@ export default function Profile() {
   }
 
   return (
-    <main>
-      <h1>Edit Profile</h1>
-      {message && <p>{message}</p>}
-      <form onSubmit={handleSubmit}>
-        <label>
-          First Name:
-          <input
-            type="text"
-            value={firstName}
-            onChange={(e) => setFirstName(e.target.value)}
-            disabled={loading}
-            required
-          />
-        </label>
-        <br />
-        <label>
-          Last Name:
-          <input
-            type="text"
-            value={lastName}
-            onChange={(e) => setLastName(e.target.value)}
-            disabled={loading}
-            required
-          />
-        </label>
-        <br />
-        <label>
-          Email:
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            disabled={loading}
-            required
-          />
-        </label>
-        <br />
-        <button type="submit" disabled={loading}>
-          {loading ? "Saving..." : "Save"}
-        </button>
-      </form>
-    </main>
+    <div className="profile-container">
+      <main>
+        <h1>Edit Profile</h1>
+        {message && <p>{message}</p>}
+        <form onSubmit={handleSubmit}>
+          <label>
+            First Name:
+            <input
+              type="text"
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
+              disabled={loading}
+              required
+            />
+          </label>
+          <br />
+          <label>
+            Last Name:
+            <input
+              type="text"
+              value={lastName}
+              onChange={(e) => setLastName(e.target.value)}
+              disabled={loading}
+              required
+            />
+          </label>
+          <br />
+          <label>
+            E-mail:
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              disabled={loading}
+              required
+            />
+          </label>
+          <br />
+          <button type="submit" disabled={loading}>
+            {loading ? "Saving..." : "Save"}
+          </button>
+        </form>
+      </main>
+    </div>
   );
 }
