@@ -10,18 +10,22 @@ export function Nav() {
 
   return (
     <nav className="nav-container">
-      {/* Left side - Home and Stores */}
-      <ul className="nav-center">
+      {/* Left side - Site Title */}
+      <div className="nav-left">
+        <h1 className="site-title">
+          <Link to="/">SpinPoint</Link>
+        </h1>
+      </div>
+
+      {/* Right side - Links */}
+      <ul className="nav-right">
         <li>
           <Link to="/">Home</Link>
         </li>
         <li>
           <Link to="/stores">Stores</Link>
         </li>
-      </ul>
 
-      {/* Right side - Auth Links */}
-      <ul className="nav-right">
         {!user && (
           <>
             <li>
@@ -38,7 +42,6 @@ export function Nav() {
             <li>
               <Link to="/profile">Profile</Link>
             </li>
-            {/* Show Admin Dashboard link only if user role is "owner" */}
             {user.role === "owner" && (
               <li>
                 <Link to="/admin">Admin</Link>
