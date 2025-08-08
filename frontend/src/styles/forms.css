@@ -1,0 +1,85 @@
+form {
+  background-color: #222;
+  padding: 1rem 1.2rem;
+  border-radius: 8px;
+  max-width: 500px;
+  margin-top: 1rem;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.7);
+  color: #eee;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+label {
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  display: block;
+}
+
+/* INPUTS & TEXTAREA */
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="password"],
+textarea {
+  padding: 0.5rem;
+  border-radius: 4px;
+  font-size: 1rem;
+  border: 1px solid #444;
+  background-color: #1a1a1a;
+  color: #eee;
+  width: 100%;
+}
+
+textarea {
+  resize: vertical;
+}
+
+input:focus,
+textarea:focus {
+  outline: 2px solid #1db954;
+  background-color: #222;
+}
+
+/* STORE FORM */
+.store-form-page textarea {
+  min-height: 150px;
+}
+
+.store-form-page input {
+  margin-bottom: 1rem;
+}
+
+/* REVIEW FORM */
+.review-form-container {
+  max-width: 400px;
+  width: 100%;
+  margin: 2rem auto;
+}
+
+.review-form {
+  background-color: #222;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  width: 100%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.review-form label {
+  font-weight: 600;
+  color: #eee;
+}
+
+.review-form input[type="text"],
+.review-form input[type="number"] {
+  margin-top: 0.3rem;
+}
+
+/* FORM BUTTONS */
+.review-form button {
+  align-self: center;
+}

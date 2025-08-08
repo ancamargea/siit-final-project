@@ -13,8 +13,9 @@ import AddStore from "./features/Stores/AddStore";
 import EditStore from "./features/Stores/EditStore";
 import ReviewStore from "./features/Stores/ReviewStore";
 
-import "./styles-main.css";
-import "./styles-forms.css";
+import "./styles/main.css";
+import "./styles/forms.css";
+import "./styles/stores.css";
 
 function App() {
   return (

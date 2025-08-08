@@ -1,0 +1,79 @@
+/* STORE LIST */
+.store-list {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  list-style: none;
+  padding-left: 0;
+}
+
+/* STORE CARD */
+.store-card {
+  background-color: #222;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
+  transition: transform 0.2s ease;
+}
+
+.store-card:hover {
+  transform: scale(1.03);
+}
+
+.store-card h3,
+.store-card p {
+  margin-bottom: 0.6rem;
+}
+
+.store-card a {
+  font-weight: 700;
+  color: #1db954;
+}
+
+/* STORE DETAIL VIEW */
+.store-detail {
+  background-color: #222;
+  padding: 1rem;
+  border-radius: 8px;
+  max-width: 700px;
+  margin: 0 auto 2rem;
+  color: #eee;
+}
+
+.store-name {
+  color: #1db954;
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.store-info p {
+  margin-bottom: 0.6rem;
+}
+
+.store-website a {
+  color: #1db954;
+  text-decoration: none;
+}
+
+.store-website a:hover {
+  text-decoration: underline;
+}
+
+/* REVIEWS */
+.reviews-list {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 1rem;
+}
+
+.review-item {
+  background-color: #1a1a1a;
+  padding: 0.8rem;
+  border-radius: 6px;
+  margin-bottom: 0.8rem;
+  color: #ccc;
+}
+
+.review-text {
+  font-style: italic;
+}
