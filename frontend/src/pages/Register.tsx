@@ -87,7 +87,7 @@ function Register() {
 
   return (
     <div className="register-container">
-      <h1>Register</h1>
+      <h1 className="secondary-title">Register</h1>
       <form onSubmit={handleSubmit} noValidate>
         <div>
           <label>E-mail:</label>

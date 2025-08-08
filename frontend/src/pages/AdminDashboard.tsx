@@ -54,7 +54,7 @@ function AdminDashboard() {
   return (
     <div className="container">
       <div className="site-header">
-        <h2>Your Stores</h2>
+        <h1 className="secondary-title">Your Stores</h1>
         <Link to="/admin/add-store" className="button-primary">
           Add New Store
         </Link>

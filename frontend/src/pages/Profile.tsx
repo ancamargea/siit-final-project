@@ -47,7 +47,7 @@ export default function Profile() {
   return (
     <div className="profile-container">
       <main>
-        <h1>Edit Profile</h1>
+        <h1 className="secondary-title">Edit Profile</h1>
         {message && <p>{message}</p>}
         <form onSubmit={handleSubmit}>
           <label>

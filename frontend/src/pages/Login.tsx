@@ -41,7 +41,7 @@ export default function Login() {
 
   return (
     <div className="login-container">
-      <h1>Login</h1>
+      <h1 className="secondary-title">Login</h1>
       {error && <p style={{ color: "red" }}>{error}</p>}
       <form onSubmit={handleSubmit}>
         <label>

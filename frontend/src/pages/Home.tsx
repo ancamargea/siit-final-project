@@ -4,10 +4,11 @@ function Home() {
       <div className="hero-content">
         <main style={{ padding: "2rem", textAlign: "center" }}>
           <h1 className="homepage-title">Welcome to SpinPoint!</h1>
-          <p>Your go-to place for discovering the best vinyl stores around.</p>
+          <p className="subheading-title">
+            Your go-to place for discovering the best vinyl stores around.
+          </p>
           <br /> <br />
           <section>
-            <h2>Why Choose Us?</h2>
             <p>
               Whether you're hunting rare discs or love digging through crates,
               we help you find your next favorite vinyl spot — and share it with
