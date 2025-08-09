@@ -93,6 +93,24 @@
       "rating": 5,
       "website": "https://www.jaddrecords.ro",
       "id": 6
+    },
+    {
+      "name": "Viniloteca",
+      "city": "Timișoara",
+      "address": "Strada General Henri Berthelot 6",
+      "description": "Dealer online de muzici pe vinil",
+      "openHours": "11:00 - 19:30",
+      "website": "https://viniloteca.shop",
+      "id": 7
+    },
+    {
+      "name": "Spinning - Music Shop",
+      "city": "Brașov",
+      "address": "Strada Republicii 48",
+      "description": "Spinning este un boutique adresat colecționarilor de muzică pe vinil și CD, cu o largă selecție de discuri disponibilă în stoc sau pe comandă.",
+      "openHours": "10:00 - 19:00",
+      "website": "https://www.facebook.com/p/Spinning-Music-Shop-100054296060639",
+      "id": 8
     }
   ],
   "reviews": [
@@ -165,6 +183,48 @@
       "rating": 4,
       "storeId": 3,
       "id": 11
+    },
+    {
+      "userId": 5,
+      "text": "Great store, biggest collection of vinyl discs in town (I think), but you can also buy CD's. Has that specific atmosphere of \"This is the place where you find the good stuff\".",
+      "rating": 5,
+      "storeId": 7,
+      "id": 12
+    },
+    {
+      "userId": 5,
+      "text": "Excellent combination of vinyl shop, and bar. Featuring the best craft beer selection in town. Also serving coffee and tea, as well as a dose of great tunes.",
+      "rating": 5,
+      "storeId": 7,
+      "id": 13
+    },
+    {
+      "userId": 3,
+      "text": "Awesome place to have a coffee, a beer and digging the vinyl record crates for nice music.",
+      "rating": 4,
+      "storeId": 7,
+      "id": 14
+    },
+    {
+      "userId": 5,
+      "text": "Great selection! I couldn't leave without a vinyl from here.",
+      "rating": 5,
+      "storeId": 8,
+      "id": 15
+    },
+    {
+      "userId": 4,
+      "text": "Store is kinda cramped but has many vinyls and cds to choose from as well as posters and t-shirts.",
+      "rating": 4,
+      "storeId": 8,
+      "id": 16
+    },
+    {
+      "userId": 3,
+      "text": "Really nice store, nice selection of records t shirts and posters and nice owner. Would highly recommend.",
+      "rating": 5,
+      "storeId": 8,
+      "id": 17
     }
   ]
 }

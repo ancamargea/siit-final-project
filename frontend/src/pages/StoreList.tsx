@@ -64,7 +64,9 @@ function StoreList() {
 
   return (
     <div className="container">
-      <h2 style={{ marginBottom: "2rem" }}>Vinyl Stores</h2>
+      <h1 className="secondary-title" style={{ textAlign: "left" }}>
+        Vinyl Stores
+      </h1>
       {stores.length === 0 ? (
         <p>No stores found.</p>
       ) : (
