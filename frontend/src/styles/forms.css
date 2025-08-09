@@ -79,15 +79,6 @@ textarea:focus {
   box-sizing: border-box;
 }
 
-.secondary-title {
-  color: #f3dcca;
-  font-family: "Montserrat", Arial, sans-serif;
-  font-weight: 700;
-  font-size: 3rem;
-  margin-bottom: 1rem;
-  text-align: center;
-}
-
 /* DROPDOWN MENU */
 .register-container select {
   appearance: none;

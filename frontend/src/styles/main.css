@@ -101,23 +101,30 @@ h2 {
   margin: 0;
   padding: 0;
   align-items: center;
+  height: 3rem;
 }
 
 .nav-right li {
   margin-left: 0rem;
 }
 
-.nav-center a,
 .nav-right a,
-.nav-right button {
+.nav-right button.logout-btn {
   color: #f3dcca;
   text-decoration: none;
   font-weight: 600;
+  padding: 0.4rem 1rem;
+  line-height: 1.5;
+  height: 100%; /* fill nav-right height */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.nav-center a:hover,
 .nav-right a:hover,
-.nav-right button:hover {
+.nav-right button.logout-btn:hover {
   text-decoration: underline;
   color: #ffb347;
 }
@@ -133,21 +140,14 @@ h2 {
 
 .nav-right button.logout-btn {
   background-color: #ae4340;
-  padding: 0.4rem 1rem;
-  border-radius: 6px;
   cursor: pointer;
   font-weight: 600;
-  transition: background-color 0.3s ease;
   text-decoration: none;
-  line-height: 1.5;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .nav-right button.logout-btn:hover {
-  background-color: #ffb347;
-  color: #332f2c;
+  background-color: #e70c09;
+  color: #f3dcca;
 }
 
 /* BUTTONS */
@@ -228,20 +228,29 @@ button[type="submit"]:hover {
   color: #332f2c;
 }
 
+.hero-content section p {
+  font-size: 1.5rem;
+  line-height: 1.5;
+  margin-top: 5rem;
+  color: #332f2c;
+}
+
+/* TITLES */
 .homepage-title {
   font-size: 4rem;
   line-height: 1.1;
   margin-bottom: 1rem;
-  color: #332f2c;
+  color: #f3dcca;
   font-weight: 700;
   font-family: "Montserrat", sans-serif;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+  text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.6);
   transition: transform 0.3s ease, text-shadow 0.3s ease;
 }
 
 .homepage-title:hover {
   transform: scale(1.05);
-  text-shadow: 0 0 8px rgba(255, 179, 71, 0.8);
+  color: #ffb347;
+  text-shadow: 0 0 10px rgba(48, 48, 48, 0.8);
 }
 
 .subheading-title {
@@ -255,12 +264,14 @@ button[type="submit"]:hover {
   margin-left: auto;
   margin-right: auto;
 }
-
-.hero-content section p {
-  font-size: 1.5rem;
-  line-height: 1.5;
-  margin-top: 5rem;
-  color: #332f2c;
+.secondary-title {
+  color: #f3dcca;
+  font-family: "Montserrat", Arial, sans-serif;
+  font-weight: 700;
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.6);
 }
 
 /* ===== RESPONSIVE DESIGN ===== */
