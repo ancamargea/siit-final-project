@@ -9,11 +9,10 @@ Whether you're chasing rare discs or just love browsing through crates, SpinPoin
 ## Features
 
 - User registration and login with role-based access (store owners and regular users)
-- Owners can create, update, and delete their record stores
-- Users can browse stores, leave ratings, and write reviews
-- Responsive design with form validation and user-friendly error handling
-- Protected routes and UI updates without page reloads
-- Confirmation modals for destructive actions
+- Owners can add or edit their record stores
+- Users can browse stores, leave reviews, ratings, and delete their reviews
+- Responsive design with form validation
+- Protected routes
 - Backend mocked with JSON Server running on port 4000
 
 ## Technologies Used
