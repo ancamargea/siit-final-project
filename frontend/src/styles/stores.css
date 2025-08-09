@@ -97,3 +97,10 @@
   font-style: italic;
   color: #f3dcca;
 }
+
+@media (max-width: 600px) {
+  .store-name {
+    font-size: 2rem;
+    padding-left: 1rem;
+  }
+}
