@@ -21,9 +21,19 @@ Whether you're chasing rare discs or just love browsing through crates, SpinPoin
 
 - React.js with TypeScript
 - React Router for navigation
-- Axios for API requests
-- Vanilla CSS or Tailwind CSS for styling
+- Form validation using Zod schema
+- Vanilla CSS for styling
 
 ### Backend
 
 - JSON Server for mocking REST API endpoints
+- Backend based on Node.js with authentication, role-based access, and protected routes for store owners
+
+### Other technologies
+
+CRUD Functionality:
+
+- Create – Users can add stores (owners) and reviews (all logged-in users).
+- Read – All users can view stores and their reviews; admin dashboard lists owner’s stores with review stats.
+- Update – Owners can edit their stores; users can update their profile info.
+- Delete – Users can delete their own reviews; owners manage their stores.
